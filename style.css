@@ -8,6 +8,14 @@ body {
     line-height: 20px;
 }
 
+.resist {
+  color: rgb(128, 0, 128); /* 紫色，类似于紫红 */
+}
+
+.rebound {
+  color: rgb(133, 19, 33); /* 深红色 */
+}
+
 .section {
     width: 60%;
     max-width: 45rem;
