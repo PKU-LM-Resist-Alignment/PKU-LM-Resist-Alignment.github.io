@@ -35,10 +35,76 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Asap:wght@700&family=Source+Sans+3:wght@400;700&display=swap">
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    .experiment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .experiment-table th,
+    .experiment-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    .experiment-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .experiment-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .forward {
+      color: #548235;
+      font-weight: bold;
+    }
+    .inverse {
+      color: #2F5597;
+      font-weight: bold;
+    }
+    .resist {
+      color: #800080;
+      font-style: italic;
+    }
+    .rebound {
+      color: #851321;
+      font-style: italic;
+    }
+    .experiment-section {
+      margin: 40px 0;
+    }
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .experiment-vertical {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .experiment-item {
+      text-align: center;
+    }
+    .experiment-item img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .key-finding {
+      background-color: #e8f4fd;
+      padding: 15px;
+      border-left: 4px solid #2F5597;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 
 <body>
-
 
   <div class="section">
     <div class="container">
@@ -56,7 +122,6 @@
             Kaile Wang*
           </a>
         </div>
-        <div class="invisible"><br></div>
         <div class="author-col">
           <a href="https://tianyiqiu.net" target="_blank" class="author-text">
             Tianyi Qiu*
@@ -111,10 +176,20 @@
         href="https://huggingface.co/collections/PKU-Alignment/language-model-resist-alignment-683aa526612e76702e7651ae"
         class="link-block">Models</a>
     </div>
+
     <p class="tldr">
       <b>TL;DR</b>:
       We demonstrate the elasticity of post-alignment models, forming resistance to alignment.
     </p>
+
+    <div class="key-finding">
+      <h3>Key Finding: The Elasticity of Language Models</h3>
+      <p>Language models exhibit <strong>elasticity</strong> - an inherent tendency to retain original distributions and resist alignment modifications. This phenomenon encompasses:</p>
+      <ul>
+        <li><span class="resist"><strong>Resistance</strong></span>: Pre-trained models tend to maintain their original distribution</li>
+        <li><span class="rebound"><strong>Rebound</strong></span>: The deeper the alignment, the faster models return to pre-training distribution under reverse fine-tuning</li>
+      </ul>
+    </div>
 
     <div id="content">
       <h2 class="section-header">Overview</h2>
@@ -165,6 +240,181 @@
           </li>
         </ul>
       </div>
+
+    <div id="content">
+      
+      <h2 class="section-header">Experimental Validation</h2>
+      
+      <div class="experiment-section">
+        <h3>1. Evidence of <span class="resist">Resistance</span> Phenomenon</h3>
+        <div class="paragraph">
+          We validate that <span class="inverse">inverse alignment</span> is consistently easier than <span class="forward">forward alignment</span> across different models and datasets. The experimental setup compares training loss when moving between different alignment states.
+        </div>
+        
+        <img class="wide-img" src="static/exp_images/exp1_recon.png" alt="Resistance Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        
+        <table class="experiment-table">
+          <caption><strong>Comparison between Inverse and Forward Alignment Training Loss</strong></caption>
+          <thead>
+            <tr>
+              <th rowspan="2">Datasets</th>
+              <th rowspan="2">Base Models</th>
+              <th colspan="3">Training Loss Comparison</th>
+            </tr>
+            <tr>
+              <th>θ₂ → θ₁ vs. θ₁ → θ₂</th>
+              <th>θ₃ → θ₂ vs. θ₂ → θ₃</th>
+              <th>θ₃ → θ₁ vs. θ₁ → θ₃</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3"><strong>Alpaca</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.1589 ↓</span>  <span class="forward">0.2018 ↑</span></td>
+              <td><span class="inverse">0.1953 ↓</span>  <span class="forward">0.2143 ↑</span></td>
+              <td><span class="inverse">0.1666 ↓</span>  <span class="forward">0.2346 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.1772 ↓</span>  <span class="forward">0.1958 ↑</span></td>
+              <td><span class="inverse">0.2149 ↓</span>  <span class="forward">0.2408 ↑</span></td>
+              <td><span class="inverse">0.1835 ↓</span>  <span class="forward">0.2345 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2540 ↓</span>  <span class="forward">0.2573 ↑</span></td>
+              <td><span class="inverse">0.2268 ↓</span>  <span class="forward">0.3229 ↑</span></td>
+              <td><span class="inverse">0.2341 ↓</span>  <span class="forward">0.2589 ↑</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>TruthfulQA</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.1909 ↓</span>  <span class="forward">0.2069 ↑</span></td>
+              <td><span class="inverse">0.1719 ↓</span>  <span class="forward">0.1721 ↑</span></td>
+              <td><span class="inverse">0.2011 ↓</span>  <span class="forward">0.2542 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.1704 ↓</span>  <span class="forward">0.1830 ↑</span></td>
+              <td><span class="inverse">0.1544 ↓</span>  <span class="forward">0.1640 ↑</span></td>
+              <td><span class="inverse">0.1825 ↓</span>  <span class="forward">0.2429 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2118 ↓</span>  <span class="forward">0.2256 ↑</span></td>
+              <td><span class="inverse">0.2100 ↓</span>  <span class="forward">0.2173 ↑</span></td>
+              <td><span class="inverse">0.2393 ↓</span>  <span class="forward">0.2898 ↑</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>BeaverTails</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.2730 ↓</span>  <span class="forward">0.2809 ↑</span></td>
+              <td><span class="inverse">0.2654 ↓</span>  <span class="forward">0.2691 ↑</span></td>
+              <td><span class="inverse">0.2845 ↓</span>  <span class="forward">0.2883 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.2419 ↓</span>  <span class="forward">0.2439 ↑</span></td>
+              <td><span class="inverse">0.2320 ↓</span>  <span class="forward">0.2327 ↑</span></td>
+              <td><span class="inverse">0.2464 ↓</span>  <span class="forward">0.2606 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2097 ↓</span>  <span class="forward">0.2156 ↑</span></td>
+              <td><span class="inverse">0.2008 ↓</span>  <span class="forward">0.2427 ↑</span></td>
+              <td><span class="inverse">0.2277 ↓</span>  <span class="forward">0.2709 ↑</span></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="key-finding">
+          <strong>Key Result:</strong> <span class="inverse">Inverse alignment</span> consistently shows lower training loss than <span class="forward">forward alignment</span> across all models and datasets, confirming the <span class="resist">resistance</span> phenomenon.
+        </div>
+      </div>
+
+      <div class="experiment-section">
+        <h3>2. Evidence of <span class="rebound">Rebound</span> Phenomenon</h3>
+        <div class="paragraph">
+          We demonstrate that models trained with more positive data initially perform better but deteriorate faster when fine-tuned with negative data, exhibiting a characteristic <span class="rebound">rebound</span> pattern.
+        </div>
+        
+        <img class="wide-img" src="static/exp_images/exp2.png" alt="Rebound Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        
+        <div class="experiment-vertical">
+          <div class="experiment-item">
+            <h4>IMDb Sentiment Task</h4>
+            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on IMDb">
+            <p>Models with more positive training show faster performance decline under negative fine-tuning</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Alignment Task</h4>
+            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on Safety">
+            <p>Similar rebound patterns observed in safety-related alignment tasks</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="experiment-section">
+        <h3>3. Factors Affecting <span class="rebound">Rebound</span> Strength</h3>
+        
+        <h4>3.1 Model Size Impact</h4>
+        <div class="paragraph">
+          Larger models exhibit stronger <span class="rebound">rebound</span> effects, with faster initial performance decline and slower subsequent decline.
+        </div>
+        
+        <div class="experiment-grid">
+          <div class="experiment-item">
+            <h4>IMDb Task - Model Scaling</h4>
+            <img src="static/exp_images/imdb_model_size.png" alt="Model Size Impact on IMDb">
+            <p>0.5B → 4B → 7B parameter models show increasing rebound strength</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Task - Model Scaling</h4>
+            <img src="static/exp_images/safety_model_size.png" alt="Model Size Impact on Safety">
+            <p>Consistent scaling behavior across different alignment objectives</p>
+          </div>
+        </div>
+
+        <h4>3.2 Pre-training Data Volume Impact</h4>
+        <div class="paragraph">
+          Models trained on larger pre-training datasets show enhanced <span class="rebound">rebound</span> effects, supporting our theoretical predictions.
+        </div>
+        
+        <div class="experiment-grid">
+          <div class="experiment-item">
+            <h4>IMDb Task - Data Scaling</h4>
+            <img src="static/exp_images/imdb_data.png" alt="Data Volume Impact on IMDb">
+            <p>2.0T → 2.5T → 3.0T pre-training data shows increasing rebound</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Task - Data Scaling</h4>
+            <img src="static/exp_images/safety_data.png" alt="Data Volume Impact on Safety">
+            <p>Larger pre-training datasets amplify resistance to alignment</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-header">Key Experimental Insights</h2>
+      <div class="paragraph">
+        <ul>
+          <li><strong>Universal Phenomenon:</strong> <span class="resist">Resistance</span> and <span class="rebound">rebound</span> effects are observed consistently across different models (Llama2-7B/13B, Llama3-8B, Gemma-2B, Qwen series) and tasks</li>
+          <li><strong>Scaling Behavior:</strong> Both model size and pre-training data volume positively correlate with elasticity strength</li>
+          <li><strong>Algorithmic Independence:</strong> The phenomenon persists across different alignment methods (SFT, RLHF, DPO, KTO, SimPO)</li>
+          <li><strong>Practical Implications:</strong> Even minimal negative fine-tuning can rapidly undo extensive positive alignment</li>
+        </ul>
+      </div>
+
+      <h2 class="section-header">Broader Impact</h2>
+      <div class="paragraph">
+        Our findings reveal fundamental challenges in language model alignment:
+        <ul>
+          <li><strong>Alignment Fragility:</strong> Current fine-tuning methods may only achieve superficial modifications</li>
+          <li><strong>Open-source Risks:</strong> Advanced inverse alignment techniques could compromise even well-aligned models</li>
+          <li><strong>Research Directions:</strong> Need for more robust alignment methods that achieve deeper, more persistent modifications</li>
+        </ul>
+      </div>
+
       <h2 class="section-header">Citation</h2>
       <div class="citation">
         <pre id="codecell0">
