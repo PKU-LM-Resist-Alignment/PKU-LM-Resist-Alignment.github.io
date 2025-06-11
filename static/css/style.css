@@ -208,6 +208,7 @@ body {
   }
 }
 
+/* 导航栏样式 */
 .navbar {
   position: fixed;
   top: 0;
@@ -250,6 +251,7 @@ body {
   color: var(--secondary-color);
 }
 
+/* 返回顶部按钮样式 */
 .back-to-top {
   position: fixed;
   bottom: 2rem;
@@ -274,6 +276,7 @@ body {
   background-color: #2980b9;
 }
 
+/* 响应式导航栏 */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -287,6 +290,7 @@ body {
   }
 }
 
+/* 调整主内容区域的上边距，为固定导航栏留出空间 */
 .section {
   padding-top: 6rem;
 }
