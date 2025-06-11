@@ -6,16 +6,17 @@
   <meta content="Language Models Resist Alignment: Evidence From Data Compression" name="description" />
   <meta content="Language Models Resist Alignment: Evidence From Data Compression" property="og:title" />
   <meta content="Language Models Resist Alignment: Evidence From Data Compression" property="og:description" />
-  <meta content="https://truthfulvqa.github.io/static/images/open_graph.png" property="og:image" />
+  <!-- <meta content="https://truthfulvqa.github.io/static/images/open_graph.png" property="og:image" />  网页分享时显示的图片 -->
   <meta content="Language Models Resist Alignment: Evidence From Data Compression" property="twitter:title" />
   <meta content="Language Models Resist Alignment: Evidence From Data Compression" property="twitter:description" />
-  <meta content="https://truthfulvqa.github.io/static/images/open_graph.png" property="twitter:image" />
+  <!-- <meta content="https://truthfulvqa.github.io/static/images/open_graph.png" property="twitter:image" />  twitter分享时显示的内容图片 -->
   <meta property="og:type" content="website" />
   <meta content="summary_large_image" name="twitter:card" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <!-- 设置网站标签页图标 -->
   <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
@@ -70,6 +71,7 @@
       line-height: 1.3;
       color: white;
     }
+    
     .link-button {
       background-color: #000000;
       color: white;
@@ -79,15 +81,20 @@
       transition: opacity 0.3s ease;
       margin: 0 10px;
     }
+
     .link-button:hover {
       opacity: 0.8;
     }
+
     .link-button i {
+      font-size: 1.2em; /* 统一大小 */
+      vertical-align: middle; /* 保证和文字对齐 */
       margin-right: 8px;
     }
-    .link-button .fa-github {
-      font-size: 1.1em;
-      vertical-align: -0.1em;
+
+    /* 清除可能的 ::before 装饰 */
+    .link-button::before {
+      content: none !important;
     }
     .author-text {
       color: white;
@@ -331,6 +338,11 @@
       position: absolute;
       left: -1.2rem;
     }
+    .pipeline-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
     @media (max-width: 1024px) {
       .category-section {
         grid-template-columns: repeat(2, 1fr);
@@ -353,14 +365,25 @@
         </div>
         <div class="row">
           <div class="author-col">
-            <a href="#" class="author-text">Anonymous Authors</a>
+            <a href="#" class="author-text" target="_blank">Jiaming Ji*</a>,
+            <a href="#" class="author-text" target="_blank">Kaile Wang*</a>,
+            <a href="#" class="author-text" target="_blank">Tianyi Qiu*</a>,
+            <a href="#" class="author-text" target="_blank">Boyuan Chen*</a>,
+            <a href="#" class="author-text" target="_blank">Jiayi Zhou*</a>,
+            <a href="#" class="author-text">Changye Li</a>,
+            <a href="#" class="author-text">Hantao Lou</a>,
+            <a href="#" class="author-text">Josef Dai</a>,
+            <a href="#" class="author-text">Yunhuai Liu</a>,
+            <a href="#" class="author-text">Yaodong Yang</a>
+            <p class="author-note" style="color:white; font-size:0.9rem; margin-top:0.5rem;">* Equal contribution</p>
           </div>
         </div>
 
         <div class="row button-row">
-          <a class="link-button" href="#" target="_blank"><i class="fas fa-file-pdf"></i>Paper</a>
-          <a class="link-button" href="" target="_blank"><i class="fab fa-github"></i>Code</a>
-          <a class="link-button" href="" target="_blank"><i class="fas fa-database"></i>Data</a>
+          <a class="link-button" href="https://arxiv.org/abs/2406.06144" target="_blank"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="link-button" href="https://github.com/PKU-Alignment/llms-resist-alignment" target="_blank"><i class="fab fa-github"></i>Code</a>
+          <a class="link-button" href="https://huggingface.co/collections/PKU-Alignment/language-model-resist-alignment-683aa526612e76702e7651ae" target="_blank"><i class="fas fa-cubes"></i>Models</a>
+          <!-- <a class="link-button" href="" target="_blank"><i class="fas fa-database"></i>Data</a> -->
         </div>
       </div>
 
@@ -370,12 +393,16 @@
       </p>
 
       <div id="content">
-        <div class="pipeline-gif-container">
+        <!-- <div class="pipeline-gif-container">
           <video class="pipeline-gif" autoplay loop muted playsinline>
             <source src="static/images/case.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+        </div> -->
+        <div class="pipeline-gif-container">
+          <img src="static/figs/resist_main_web.png" alt="Resist Web Figure" class="pipeline-image">
         </div>
+        
 
         <h2 class="section-header" id="overview">Overview</h2>
         <div class="paragraph">
@@ -384,7 +411,7 @@
           
             In this work, we make the first exploration of this phenomenon from both theoretical and empirical perspectives. Empirically, we demonstrate the <i>elasticity</i> of post-alignment models, <i>i.e.</i>, the tendency to revert to the behavior distribution formed during the pre-training phase upon further fine-tuning. Leveraging compression theory, we formally deduce that fine-tuning disproportionately undermines alignment relative to pre-training, potentially by orders of magnitude.
           
-            We validate the presence of <i>elasticity</i> through experiments on models of varying types and scales. Specifically, we find that model performance declines rapidly before reverting to the pre-training distribution, after which the rate of decline drops significantly. Furthermore, we further reveal that <i>elasticity</i> positively correlates with the increased model size and the expansion of pre-training data.
+            We validate the presence of <b><i>elasticity</i></b> through experiments on models of varying types and scales. Specifically, we find that model performance declines rapidly before reverting to the pre-training distribution, after which the rate of decline drops significantly. Furthermore, we further reveal that <i>elasticity</i> positively correlates with the increased model size and the expansion of pre-training data.
           
             Our findings underscore the need to address the inherent <i>elasticity</i> of LLMs to mitigate their resistance to alignment.
           </p>
