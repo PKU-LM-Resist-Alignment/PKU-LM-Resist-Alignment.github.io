@@ -4,27 +4,28 @@
 <head>
   <meta charset="utf-8">
   <meta
-    content="Dynalang leverages diverse types of language to solve tasks by using language to predict the future in a multimodal world model."
+    content="Language Models Resist Alignment: Evidence From Data Compression"
     name="description" />
-  <meta content="Dynalang: Learning to Model the World with Language" property="og:title" />
+  <meta content="Language Models Resist Alignment: Evidence From Data Compression" property="og:title" />
   <meta
-    content="Dynalang leverages diverse types of language to solve tasks by using language to predict the future in a multimodal world model."
+    content="We demonstrate that language models exhibit elasticity, making them resistant to alignment through compression theory analysis and extensive experiments."
     property="og:description" />
-  <meta content="https://dynalang.github.io/data/open_graph.png" property="og:image" />
-  <meta content="Learning to Model the World with Language" property="twitter:title" />
+  <meta content="https://pku-lm-resist-alignment.github.io/data/open_graph.png" property="og:image" />
+  <meta content="Language Models Resist Alignment" property="twitter:title" />
   <meta
-    content="Dynalang leverages diverse types of language to solve tasks by using language to predict the future in a multimodal world model."
+    content="We demonstrate that language models exhibit elasticity, making them resistant to alignment through compression theory analysis and extensive experiments."
     property="twitter:description" />
-  <meta name="twitter:site" content="@realJessyLin" />
-  <meta name="twitter:creator" content="@realJessyLin" />
-  <meta content="https://dynalang.github.io/data/open_graph.png" property="twitter:image" />
+  <meta content="https://pku-lm-resist-alignment.github.io/data/open_graph.png" property="twitter:image" />
   <meta property="og:type" content="website" />
   <meta content="summary_large_image" name="twitter:card" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-  <title>Learning to Model the World with Language</title>
+  <title>Language Models Resist Alignment: Evidence From Data Compression</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Z7HCWJNBC"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -38,326 +39,407 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Asap:wght@700&family=Source+Sans+3:wght@400;700&display=swap">
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    .experiment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .experiment-table th,
+    .experiment-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    .experiment-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .experiment-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .forward {
+      color: #548235;
+      font-weight: bold;
+    }
+    .inverse {
+      color: #2F5597;
+      font-weight: bold;
+    }
+    .resist {
+      color: #800080;
+      font-style: italic;
+    }
+    .rebound {
+      color: #851321;
+      font-style: italic;
+    }
+    .experiment-section {
+      margin: 40px 0;
+    }
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .experiment-vertical {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .experiment-item {
+      text-align: center;
+    }
+    .experiment-item img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .key-finding {
+      background-color: #e8f4fd;
+      padding: 15px;
+      border-left: 4px solid #2F5597;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 
 <body>
 
-
   <div class="section">
     <div class="container">
       <div class="title-row">
-        <h1 class="title">Learning to Model the World with Language<h1>
+        <h1 class="title">Language Models Resist Alignment: Evidence From Data Compression<h1>
       </div>
       <div class="row">
         <div class="author-col">
           <a href="https://jijiaming.com/" target="_blank" class="author-text">
-            Jiaming Ji
+            Jiaming Ji*
           </a>
         </div>
         <div class="author-col">
           <a href="https://scholar.google.com.hk/citations?user=hTNgG1YAAAAJ" target="_blank" class="author-text">
-            Kaile Wang
+            Kaile Wang*
           </a>
         </div>
-        <div class="invisible"><br></div>
         <div class="author-col">
           <a href="https://tianyiqiu.net" target="_blank" class="author-text">
-            Tianyi Qiu
+            Tianyi Qiu*
           </a>
         </div>
         <div class="author-col">
           <a href="https://cby-pku.github.io/" target="_blank" class="author-text">
-            Boyuan Chen
-            <span class="superscript"></span>
+            Boyuan Chen<span class="superscript">*</span>
           </a>
         </div>
         <div class="author-col">
           <a href="https://gaiejj.github.io" target="_blank" class="author-text">
-            Jiayi Zhou
+            Jiayi Zhou*
           </a>
         </div>
       </div>
       <div class="row">
-
         <div class="author-col">
-          <a href="https://people.eecs.berkeley.edu/~klein/" target="_blank" class="author-text">
-            Dan Klein
+          <a class="author-text">
+            Changye Li
           </a>
         </div>
         <div class="author-col">
-          <a href="https://people.eecs.berkeley.edu/~anca/" target="_blank" class="author-text">
-            Anca Dragan
+          <a class="author-text">
+            Hantao Lou
+          </a>
+        </div>
+        <div class="author-col">
+          <a class="author-text">
+            Juntao Dai
+          </a>
+        </div>
+        <div class="author-col">
+          <a class="author-text">
+            Yunhuai Liu
+          </a>
+        </div>
+        <div class="author-col">
+          <a href="https://www.yangyaodong.com/" target="_blank" class="author-text">
+            Yaodong Yang<span class="superscript">†</span>
           </a>
         </div>
       </div>
 
     </div>
-    <p id="uc-berkeley">UC Berkeley</h1>
+    <p id="uc-berkeley">Peking University</h1>
 
     <div class="row button-row">
-      <a class="link-button" href="https://arxiv.org/abs/2308.01399" target="_blank" class="link-block">Paper</a>
-      <a class="link-button" href="https://github.com/jlin816/dynalang" class="link-block">Code</a>
-      <a class="link-button" href="https://twitter.com/realJessyLin/status/1687515845281624064"
-        class="link-block">Tweet</a>
+      <a class="link-button" href="https://arxiv.org/abs/2406.06144" target="_blank" class="link-block">Paper</a>
+      <a class="link-button" href="https://github.com/PKU-Alignment/llms-resist-alignment" class="link-block">Code</a>
+      <a class="link-button"
+        href="https://huggingface.co/collections/PKU-Alignment/language-model-resist-alignment-683aa526612e76702e7651ae"
+        class="link-block">Models</a>
     </div>
+
     <p class="tldr">
       <b>TL;DR</b>:
-      Dynalang leverages diverse types of language to solve tasks by using language to predict the future via a
-      multimodal world model.
+      We discover that language models exhibit <span class="resist">elasticity</span>, causing them to resist alignment and enabling <span class="inverse">inverse alignment</span>. Through compression theory and extensive experiments, we demonstrate that models tend to revert to pre-training distributions when fine-tuned, with this effect strengthening as model size and pre-training data increase.
     </p>
-    <video id="main-video" muted autoplay controls playsinline loop>
-      <source id="mp4" src="data/videos/teaser.mp4" type="video/mp4">
-    </video>
+
+
+    <div class="key-finding">
+      <h3>Key Finding: The Elasticity of Language Models</h3>
+      <p>Language models exhibit <strong>elasticity</strong> - an inherent tendency to retain original distributions and resist alignment modifications. This phenomenon encompasses:</p>
+      <ul>
+        <li><span class="resist"><strong>Resistance</strong></span>: Pre-trained models tend to maintain their original distribution</li>
+        <li><span class="rebound"><strong>Rebound</strong></span>: The deeper the alignment, the faster models return to pre-training distribution under reverse fine-tuning</li>
+      </ul>
+    </div>
 
     <div id="content">
       <h2 class="section-header">Overview</h2>
       <div class="paragraph">
         <p>
-          To interact with humans and act in the world, agents need to understand the range of language that people use
-          and relate it to the visual world. While current agents learn to execute simple language instructions from
-          task rewards, we aim to build agents that leverage diverse language that conveys general knowledge, describes
-          the state of the world, provides interactive feedback, and more. Our key idea is that <b>language helps agents
-            predict the future</b>: what will be observed, how the world will behave, and which situations will be
-          rewarded. This perspective unifies language understanding with future prediction as a powerful self-supervised
-          learning objective. We present Dynalang, an agent that learns a multimodal world model that predicts future
-          text and image representations and learns to act from imagined model rollouts. Unlike traditional agents that
-          use language only to predict actions, Dynalang acquires rich language understanding by using past language
-          also to predict future language, video, and rewards. In addition to learning from online interaction in an
-          environment, Dynalang can be pretrained on datasets of text, video, or both without actions or rewards. From
-          using language hints in grid worlds to navigating photorealistic scans of homes, Dynalang utilizes diverse
-          types of language to improve task performance, including environment descriptions, game rules, and
-          instructions.
+          Large language models (LLMs) may exhibit unintended or undesirable behaviors. Recent works have concentrated
+          on aligning LLMs to mitigate harmful outputs. Despite these efforts, some anomalies indicate that even a
+          well-conducted alignment process can be easily circumvented, whether intentionally or accidentally. Does
+          alignment fine-tuning yield have robust effects on models, or are its impacts merely
+          <i><b>superficial?</b></i> In
+          this work, we make the first exploration of this phenomenon from both theoretical and empirical perspectives.
+          Empirically, we demonstrate the <i><b>elasticity</b></i> of post-alignment models, <i>i.e.</i>, the tendency
+          to
+          revert to the behavior distribution formed during the pre-training phase upon further fine-tuning. Leveraging
+          compression theory, we formally deduce that fine-tuning disproportionately undermines alignment
+          relative to pre-training, potentially by orders of magnitude. We validate the presence of <i>elasticity</i>
+          through experiments on models of varying types and scales. Specifically, we find that model performance
+          declines rapidly before reverting to the pre-training
+          distribution, after which the rate of decline drops significantly. Furthermore, we further reveal that
+          <i>elasticity</i> positively correlates with the increased model size
+          and the expansion of pre-training data. Our findings underscore the need to address the inherent
+          <i>elasticity</i> of LLMs to mitigate their
+          resistance to alignment.
         </p>
         <p><b>Contributions:</b></p>
         <ul>
-          <li>We propose Dynalang, an agent that grounds language to visual experience via future prediction.
-          <li>We demonstrate that Dynalang learns to understand diverse kinds of language to solve a broad range of
-            tasks, often outperforming state-of-the-art RL algorithms and task-specific architectures.
-          <li>We show that the Dynalang formulation enables additional capabilities: language generation can be unified
-            in the same model, as well as text-only pretraining without actions or task rewards.
-        </ul>
-      </div>
+          <li>
+            <b>Phenomenon:</b> we uncover that language models exhibit <i>elasticity</i>. It encompasses
+            <span class="resist">resistance</span>: pre-trained models tend
+            to retain their original distribution; and <span class="rebound">rebound</span>: the deeper alignment of
+            models, the faster
+            they return to the pre-trained distribution under reverse finetuning. Moreover, The model’s change in
+            compression rates \(\Delta \gamma_{p_\mathbf{\theta}}^{\mathcal{D}_i/\mathcal{D}}\) across
+            different datasets is inversely proportional to their sizes \(|\mathcal{D}_i|\), which is
+            analogous to the deformation behavior of a series of springs.
 
-      <h2 class="section-header">How It Works</h2>
-      <div class="img-container">
-        <div class="paragraph">
-          Using language to understand the world naturally fits into a world modeling paradigm. We build on DreamerV3, a
-          model-based RL agent.
-          Dynalang learns continuously from experience data the agent collects while acting in an environment.
-        </div>
-        <div class="paragraph">
-          (left) The world model compresses the text and image at each timestep into a latent representation. From the
-          representation, the model is trained to reconstruct the original observations, predict rewards, and predict
-          the representation at the next timestep.
-          Intuitively, the world model learns <b>what it should expect to see in the world</b> given what it reads in
-          text.
-        </div>
-        <div class="paragraph">
-          (right) Dynalang chooses actions by training a policy network on top of the compressed world model
-          representations. It is trained on imagined rollouts from the world model and learns to take actions that
-          maximize predicted rewards.
-        </div>
-        <img class="wide-img" src="static/images/model.png" alt="Dynalang Model Architecture">
-        <div class="paragraph">
-          Unlike previous multimodal models that consume text one sentence or paragraph at a time, we design Dynalang to
-          model video and text as a unified sequence, consuming one image frame and one text token at a time.
-          Intuitively, this is similar to how humans receive inputs in the real world—as a single multimodal stream,
-          where listening to language takes time. Modeling everything as one sequence enables pretraining the model on
-          text data like a language model and improves RL performance.
-        </div>
-      </div>
-
-      <h2 class="section-header">Language Hints in HomeGrid</h2>
-      <div class="paragraph">
-        We introduce HomeGrid to evaluate agents in an environment where they receive <i>language hints</i> in addition
-        to task instructions. Hints in HomeGrid simulate knowledge that agents might learn from humans or read in text,
-        providing information that is helpful but not required to solve tasks:
-        <ul>
-          <li><b>Future Observations</b> describe what agents might observe in the future, such as "The plates are in
-            the kitchen."</li>
-          <li><b>Corrections</b> provide interactive feedback based on what the agent is doing, such as "Turn around."
           </li>
-          <li><b>Dynamics</b> describe the dynamics of the environment, such as "Pedal to open the compost bin."</li>
+          <li>
+            <b>Mechanism:</b> We systematically model the training and alignment process of language models through
+            compression theorem. We elaborate on the compression
+            protocol of language models to explore their training and alignment processes, laying a foundation for
+            subsequent research on <i>elasticity</i>.
+          </li>
+          <li>
+            <b>Validation:</b> We experimentally observe consistent resistance and rebound phenomena
+            across various LLMs. This highlights the universality of elasticity and the need for systematic approaches
+            to achieve robust and deep alignment.
+          </li>
         </ul>
       </div>
-      <div class="paragraph">The HomeGrid environment will be released with the code to encourage further work in this
-        direction.</div>
 
-      <div class="videos">
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/homegrid_future.mp4" type="video/mp4">
-          </video>
-          <p class="caption">Future Observations</p>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/homegrid_corrections.mp4" type="video/mp4">
-          </video>
-          <p class="caption">Corrections</p>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/homegrid_dyn.mp4" type="video/mp4">
-          </video>
-          <p class="caption">Dynamics</p>
-        </div>
-      </div>
-
-      <div class="paragraph">
-        Even though agents do not receive explicit supervision for what observations a piece of text corresponds to,
-        Dynalang learns to ground language of all types to the environment via the future prediction objective. Dynalang
-        outperforms language-conditioned IMPALA and R2D2 that struggle to use different kinds of language and often do
-        worse with language beyond instructions.
-      </div>
-
-      <img class="wide-img" src="static/images/homegrid_bars.png" alt="HomeGrid Results">
-
-      <h2 class="section-header">Game Manuals in Messenger</h2>
-      <div class="paragraph">
-        We evaluate on the Messenger game environment to test how agents learn from longer and more complex text that
-        requires multi-hop reasoning over text and visual observations. Agents must reason over text manuals describing
-        the dynamics of each episode and combine them with observations of the entities in the environment to determine
-        which entities to get messages from and which to avoid. Dynalang outperforms IMPALA and R2D2, as well as the
-        task-specific EMMA baseline that uses a specialized architecture to reason over text and observations,
-        particularly on the most difficult Stage 3.
-      </div>
-      <img class="med-img" src="static/images/messenger_curves.png" alt="Messenger Results">
-      <div class="videos">
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/s30.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/s31.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/s32.mp4" type="video/mp4">
-          </video>
-
-        </div>
-      </div>
-
-      <h2 class="section-header">Instruction Following in Habitat</h2>
-      <div class="img-by-text">
-        <img class="sm-img" src="static/images/vln.png" alt="Vision-Language Navigation Results">
+    <div id="content">
+      
+      <h2 class="section-header">Experimental Validation</h2>
+      
+      <div class="experiment-section">
+        <h3>1. Evidence of <span class="resist">Resistance</span> Phenomenon</h3>
         <div class="paragraph">
-          We also show that Dynalang is able to handle photorealistic visual observations and perform instruction
-          following in Habitat. Agents must follow natural language instructions to navigate to a goal location in a
-          photorealistic scan of a home. In Dynalang, instruction following can be unified in the same prediction
-          framework by viewing it as future reward prediction.
+          We validate that <span class="inverse">inverse alignment</span> is consistently easier than <span class="forward">forward alignment</span> across different models and datasets. The experimental setup compares training loss when moving between different alignment states.
         </div>
-      </div>
-      <div class="videos">
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/vln1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/vln0.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div>
-          <video muted autoplay controls playsinline loop>
-            <source id="mp4" src="data/videos/vln3.mp4" type="video/mp4">
-          </video>
+        
+        <img class="wide-img" src="static/exp_images/exp1_recon.png" alt="Resistance Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        
+        <table class="experiment-table">
+          <caption><strong>Comparison between Inverse and Forward Alignment Training Loss</strong></caption>
+          <thead>
+            <tr>
+              <th rowspan="2">Datasets</th>
+              <th rowspan="2">Base Models</th>
+              <th colspan="3">Training Loss Comparison</th>
+            </tr>
+            <tr>
+              <th>θ₂ → θ₁ vs. θ₁ → θ₂</th>
+              <th>θ₃ → θ₂ vs. θ₂ → θ₃</th>
+              <th>θ₃ → θ₁ vs. θ₁ → θ₃</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3"><strong>Alpaca</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.1589 ↓</span>  <span class="forward">0.2018 ↑</span></td>
+              <td><span class="inverse">0.1953 ↓</span>  <span class="forward">0.2143 ↑</span></td>
+              <td><span class="inverse">0.1666 ↓</span>  <span class="forward">0.2346 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.1772 ↓</span>  <span class="forward">0.1958 ↑</span></td>
+              <td><span class="inverse">0.2149 ↓</span>  <span class="forward">0.2408 ↑</span></td>
+              <td><span class="inverse">0.1835 ↓</span>  <span class="forward">0.2345 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2540 ↓</span>  <span class="forward">0.2573 ↑</span></td>
+              <td><span class="inverse">0.2268 ↓</span>  <span class="forward">0.3229 ↑</span></td>
+              <td><span class="inverse">0.2341 ↓</span>  <span class="forward">0.2589 ↑</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>TruthfulQA</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.1909 ↓</span>  <span class="forward">0.2069 ↑</span></td>
+              <td><span class="inverse">0.1719 ↓</span>  <span class="forward">0.1721 ↑</span></td>
+              <td><span class="inverse">0.2011 ↓</span>  <span class="forward">0.2542 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.1704 ↓</span>  <span class="forward">0.1830 ↑</span></td>
+              <td><span class="inverse">0.1544 ↓</span>  <span class="forward">0.1640 ↑</span></td>
+              <td><span class="inverse">0.1825 ↓</span>  <span class="forward">0.2429 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2118 ↓</span>  <span class="forward">0.2256 ↑</span></td>
+              <td><span class="inverse">0.2100 ↓</span>  <span class="forward">0.2173 ↑</span></td>
+              <td><span class="inverse">0.2393 ↓</span>  <span class="forward">0.2898 ↑</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>BeaverTails</strong></td>
+              <td>Llama2-7B</td>
+              <td><span class="inverse">0.2730 ↓</span>  <span class="forward">0.2809 ↑</span></td>
+              <td><span class="inverse">0.2654 ↓</span>  <span class="forward">0.2691 ↑</span></td>
+              <td><span class="inverse">0.2845 ↓</span>  <span class="forward">0.2883 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama2-13B</td>
+              <td><span class="inverse">0.2419 ↓</span>  <span class="forward">0.2439 ↑</span></td>
+              <td><span class="inverse">0.2320 ↓</span>  <span class="forward">0.2327 ↑</span></td>
+              <td><span class="inverse">0.2464 ↓</span>  <span class="forward">0.2606 ↑</span></td>
+            </tr>
+            <tr>
+              <td>Llama3-8B</td>
+              <td><span class="inverse">0.2097 ↓</span>  <span class="forward">0.2156 ↑</span></td>
+              <td><span class="inverse">0.2008 ↓</span>  <span class="forward">0.2427 ↑</span></td>
+              <td><span class="inverse">0.2277 ↓</span>  <span class="forward">0.2709 ↑</span></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="key-finding">
+          <strong>Key Result:</strong> <span class="inverse">Inverse alignment</span> consistently shows lower training loss than <span class="forward">forward alignment</span> across all models and datasets, confirming the <span class="resist">resistance</span> phenomenon.
         </div>
       </div>
 
-      <h2 class="section-header">Grounded Language Generation in LangRoom</h2>
+      <div class="experiment-section">
+        <h3>2. Evidence of <span class="rebound">Rebound</span> Phenomenon</h3>
+        <div class="paragraph">
+          We demonstrate that models trained with more positive data initially perform better but deteriorate faster when fine-tuned with negative data, exhibiting a characteristic <span class="rebound">rebound</span> pattern.
+        </div>
+        
+        <img class="wide-img" src="static/exp_images/exp2.png" alt="Rebound Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        
+        <div class="experiment-vertical">
+          <div class="experiment-item">
+            <h4>IMDb Sentiment Task</h4>
+            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on IMDb">
+            <p>Models with more positive training show faster performance decline under negative fine-tuning</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Alignment Task</h4>
+            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on Safety">
+            <p>Similar rebound patterns observed in safety-related alignment tasks</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="experiment-section">
+        <h3>3. Factors Affecting <span class="rebound">Rebound</span> Strength</h3>
+        
+        <h4>3.1 Model Size Impact</h4>
+        <div class="paragraph">
+          Larger models exhibit stronger <span class="rebound">rebound</span> effects, with faster initial performance decline and slower subsequent decline.
+        </div>
+        
+        <div class="experiment-grid">
+          <div class="experiment-item">
+            <h4>IMDb Task - Model Scaling</h4>
+            <img src="static/exp_images/imdb_model_size.png" alt="Model Size Impact on IMDb">
+            <p>0.5B → 4B → 7B parameter models show increasing rebound strength</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Task - Model Scaling</h4>
+            <img src="static/exp_images/safety_model_size.png" alt="Model Size Impact on Safety">
+            <p>Consistent scaling behavior across different alignment objectives</p>
+          </div>
+        </div>
+
+        <h4>3.2 Pre-training Data Volume Impact</h4>
+        <div class="paragraph">
+          Models trained on larger pre-training datasets show enhanced <span class="rebound">rebound</span> effects, supporting our theoretical predictions.
+        </div>
+        
+        <div class="experiment-grid">
+          <div class="experiment-item">
+            <h4>IMDb Task - Data Scaling</h4>
+            <img src="static/exp_images/imdb_data.png" alt="Data Volume Impact on IMDb">
+            <p>2.0T → 2.5T → 3.0T pre-training data shows increasing rebound</p>
+          </div>
+          <div class="experiment-item">
+            <h4>Safety Task - Data Scaling</h4>
+            <img src="static/exp_images/safety_data.png" alt="Data Volume Impact on Safety">
+            <p>Larger pre-training datasets amplify resistance to alignment</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-header">Key Experimental Insights</h2>
       <div class="paragraph">
-        Just like language can affect agents' predictions of what they will see, what an agent observes can also affect
-        what language it expects to hear (e.g., true statements about what it has seen). By outputting language in the
-        action space in LangRoom, we show that Dynalang can <i>generate</i> language grounded in environment to perform
-        embodied question answering.
-      </div>
-      <div class="img-by-text">
-        <img class="sm-img" src="static/images/langroom.png" alt="LangRoom Results">
-        <div id="langroom-vid">
-          <video muted autoplay controls playsinline loop style="width: 100%">
-            <source id="mp4" src="data/videos/langroom.mp4" type="video/mp4">
-          </video>
-        </div>
+        <ul>
+          <li><strong>Universal Phenomenon:</strong> <span class="resist">Resistance</span> and <span class="rebound">rebound</span> effects are observed consistently across different models (Llama2-7B/13B, Llama3-8B, Gemma-2B, Qwen series) and tasks</li>
+          <li><strong>Scaling Behavior:</strong> Both model size and pre-training data volume positively correlate with elasticity strength</li>
+          <li><strong>Algorithmic Independence:</strong> The phenomenon persists across different alignment methods (SFT, RLHF, DPO, KTO, SimPO)</li>
+          <li><strong>Practical Implications:</strong> Even minimal negative fine-tuning can rapidly undo extensive positive alignment</li>
+        </ul>
       </div>
 
-
-      <h2 class="section-header">Text Pretraining</h2>
+      <h2 class="section-header">Broader Impact</h2>
       <div class="paragraph">
-        Because world modeling with language is decoupled from learning to act with a world model, Dynalang can be
-        pretrained with offline data without action or reward labels. This capability provides a way for Dynalang to
-        benefit from large-scale offline datasets, all within a single model architecture. We pretrain Dynalang with
-        text-only data, learning token embeddings from scratch. Pretraining the model on general text data (TinyStories,
-        2M short stories) improves downstream RL task performance on Messenger beyond using pretrained T5 embeddings.
-      </div>
-      <img class="med-img" src="static/images/text_pretrain_all.png" alt="Text Pretraining Results">
-      <div class="paragraph">Although our work focuses on language understanding for acting in world, we can generate
-        text from the world model like a text-only language model. We sample rollouts from the pretrained TinyStories
-        model in latent space and decode the token observation from the representation at each timestep. Model
-        generations are surprisingly coherent, although still below the quality of modern language models. We see
-        unifying language generation and acting in a single agent architecture as an exciting avenue for future work.
-      </div>
-      <div id="text-samples">
-        <div class="text-sample">
-          <div class="label">Prompt</div>
-          <div class="prompt bubble"> One day, a young boy named Tim found a dull, round rock. He picked it up and
-            looked at it. He thought it was not very fun, but he took it with him to the park. At the park, Tim</div>
-          <div class="label">True</div>
-          <div class="true bubble"> saw a girl named Sue. She had</div>
-          <div class="label">Model Samples</div>
-          <ul class="samples">
-            <li class="bubble">he met. favorite friend He put it his to</li>
-            <li class="bubble">met a girl named Sue. Sue saw the ball</li>
-            <li class="bubble">saw a stick top Sam. He kept playing with</li>
-            <li class="bubble">played with his friends and but they friends!"</s> Li</li>
-            <li class="bubble">met a girl named Lily.&lt;/s&gt; ly saw</li>
-          </ul>
-        </div>
-        <div class="text-sample">
-          <div class="label">Prompt</div>
-          <div class="prompt bubble">Once upon a time, there was a little boy named Tom. Tom had a special belt that he
-            loved to wear. One day, he could not find his belt and felt very sad. Tom's mom saw him and</div>
-          <div class="label">True</div>
-          <div class="true bubble"> asked, "Why are you sad, Tom?"</div>
-          <div class="label">Model Samples</div>
-          <ul class="samples">
-            <li class="bubble">frustrated and asked him what was rude.</s> Once upon</li>
-            <li class="bubble">asked, "Why are you sad, Tom?"&lt;/s&gt;</li>
-            <li class="bubble">asked, "Howeny, I did, get</li>
-            <li class="bubble">said, "Don't worry, Tom. We</li>
-            <li class="bubble">said, "To tree, you look be in</li>
-          </ul>
-        </div>
+        Our findings reveal fundamental challenges in language model alignment:
+        <ul>
+          <li><strong>Alignment Fragility:</strong> Current fine-tuning methods may only achieve superficial modifications</li>
+          <li><strong>Open-source Risks:</strong> Advanced inverse alignment techniques could compromise even well-aligned models</li>
+          <li><strong>Research Directions:</strong> Need for more robust alignment methods that achieve deeper, more persistent modifications</li>
+        </ul>
       </div>
 
       <h2 class="section-header">Citation</h2>
       <div class="citation">
-        <pre id="codecell0">@article{lin2023learning,
-         title={Learning to Model the World with Language},
-         author={Jessy Lin and Yuqing Du and Olivia Watkins and Danijar Hafner and Pieter Abbeel and Dan Klein and Anca Dragan},
-         year={2023},
-         eprint={2308.01399},
-         archivePrefix={arXiv},
+        <pre id="codecell0">@article{ji2024language,
+  title={Language Models Resist Alignment: Evidence From Data Compression},
+  author={Jiaming Ji and Kaile Wang and Tianyi Qiu and Boyuan Chen and Jiayi Zhou and Changye Li and Hantao Lou and Juntao Dai and Yunhuai Liu and Yaodong Yang},
+  year={2024},
+  journal={arXiv preprint arXiv:TODO}
 }</pre>
       </div>
 
       <br><br>
-      <div class="paragraph-center">For more information, check out the paper, code, and tweet summary:</div>
+      <div class="paragraph-center">For more information, check out the paper, code, and datasets:</div>
       <div class="row button-row">
-        <a class="link-button" href="https://arxiv.org/abs/2308.01399" target="_blank" class="link-block">Paper</a>
-        <a class="link-button" href="https://github.com/jlin816/dynalang" class="link-block">Code</a>
-        <a class="link-button" href="https://twitter.com/realJessyLin/status/1687515845281624064"
-          class="link-block">Tweet</a>
+        <a class="link-button" href="https://arxiv.org/abs/TODO" target="_blank" class="link-block">Paper</a>
+        <a class="link-button" href="https://github.com/PKU-Alignment/PKU-LM-Resist-Alignment" class="link-block">Code</a>
+        <a class="link-button" href="#" class="link-block">Data</a>
       </div>
 
     </div>
 
-  </div>
   </div>
 </body>
 
