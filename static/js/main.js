@@ -59,13 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.className = 'navbar';
         navbar.innerHTML = `
             <div class="nav-container">
-                <a href="#" class="nav-logo">TruthfulVQA</a>
-                <div class="nav-links">
-                    <a href="#overview">Overview</a>
-                    <a href="#dataset">Dataset</a>
-                    <a href="#leaderboard">Leaderboard</a>
-                    <a href="https://github.com/truthfulvqa" target="_blank">GitHub</a>
-                </div>
+                <a href="#" class="nav-logo">Language Models Resist Alignment</a>
             </div>
         `;
         document.body.insertBefore(navbar, document.body.firstChild);
