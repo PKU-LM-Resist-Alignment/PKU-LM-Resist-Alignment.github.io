@@ -251,7 +251,7 @@
           We validate that <span class="inverse">inverse alignment</span> is consistently easier than <span class="forward">forward alignment</span> across different models and datasets. The experimental setup compares training loss when moving between different alignment states.
         </div>
         
-        <img class="wide-img" src="static/exp_images/exp1_recon.png" alt="Resistance Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        <img class="wide-img" src="static/images/exm_images/exp1_recon.png" alt="Resistance Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
         
         <table class="experiment-table">
           <caption><strong>Comparison between Inverse and Forward Alignment Training Loss</strong></caption>
@@ -339,17 +339,17 @@
           We demonstrate that models trained with more positive data initially perform better but deteriorate faster when fine-tuned with negative data, exhibiting a characteristic <span class="rebound">rebound</span> pattern.
         </div>
         
-        <img class="wide-img" src="static/exp_images/exp2.png" alt="Rebound Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
+        <img class="wide-img" src="static/images/exm_images/exp2.png" alt="Rebound Experiment Pipeline" style="max-width: 500px; margin: 20px auto; display: block;">
         
         <div class="experiment-vertical">
           <div class="experiment-item">
             <h4>IMDb Sentiment Task</h4>
-            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on IMDb">
+            <img src="static/images/exm_images/exp_existence.png" alt="Rebound Results on IMDb">
             <p>Models with more positive training show faster performance decline under negative fine-tuning</p>
           </div>
           <div class="experiment-item">
             <h4>Safety Alignment Task</h4>
-            <img src="static/exp_images/exp_existence.png" alt="Rebound Results on Safety">
+            <img src="static/images/exm_images/exp_existence.png" alt="Rebound Results on Safety">
             <p>Similar rebound patterns observed in safety-related alignment tasks</p>
           </div>
         </div>
@@ -366,12 +366,12 @@
         <div class="experiment-grid">
           <div class="experiment-item">
             <h4>IMDb Task - Model Scaling</h4>
-            <img src="static/exp_images/imdb_model_size.png" alt="Model Size Impact on IMDb">
+            <img src="static/images/exm_images/imdb_model_size.png" alt="Model Size Impact on IMDb">
             <p>0.5B → 4B → 7B parameter models show increasing rebound strength</p>
           </div>
           <div class="experiment-item">
             <h4>Safety Task - Model Scaling</h4>
-            <img src="static/exp_images/safety_model_size.png" alt="Model Size Impact on Safety">
+            <img src="static/images/exm_images/safety_model_size.png" alt="Model Size Impact on Safety">
             <p>Consistent scaling behavior across different alignment objectives</p>
           </div>
         </div>
@@ -384,12 +384,12 @@
         <div class="experiment-grid">
           <div class="experiment-item">
             <h4>IMDb Task - Data Scaling</h4>
-            <img src="static/exp_images/imdb_data.png" alt="Data Volume Impact on IMDb">
+            <img src="static/images/exm_images/imdb_data.png" alt="Data Volume Impact on IMDb">
             <p>2.0T → 2.5T → 3.0T pre-training data shows increasing rebound</p>
           </div>
           <div class="experiment-item">
             <h4>Safety Task - Data Scaling</h4>
-            <img src="static/exp_images/safety_data.png" alt="Data Volume Impact on Safety">
+            <img src="static/images/exm_images/safety_data.png" alt="Data Volume Impact on Safety">
             <p>Larger pre-training datasets amplify resistance to alignment</p>
           </div>
         </div>
