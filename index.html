@@ -274,7 +274,7 @@
     .theory-list {
       width: 100%;
       max-width: none;
-      padding-right: 405px; /* Leave space for the proof panel */
+      padding-right: 20px; /* Leave space for the proof panel */
     }
     .theory-item {
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -332,9 +332,9 @@
     }
     .proof-panel {
       position: fixed;
-      right: 40px;
+      right: 2%;
       top: 120px;
-      width: 520px;
+      width: 22%;
       height: calc(100vh - 140px);
       overflow-y: auto;
       z-index: 100;
@@ -477,6 +477,7 @@
     }
     @media (max-width: 1024px) {
       .theory-list {
+        width: 100%;
         padding-right: 0;
       }
       .proof-panel {
