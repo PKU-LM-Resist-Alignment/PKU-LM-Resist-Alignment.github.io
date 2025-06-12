@@ -74,6 +74,420 @@
     .experiment-section {
       margin: 40px 0;
     }
+    
+    /* Left Sidebar Navigation */
+    .left-sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      width: 300px;
+      height: calc(100vh - 70px);
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-right: 2px solid #e9ecef;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+      overflow-y: auto;
+      z-index: 1001;
+      padding: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    
+    .left-sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .left-sidebar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    .left-sidebar::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+    
+    .left-sidebar::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a1;
+    }
+    
+    .left-sidebar.open {
+      transform: translateX(0);
+    }
+    
+    .sidebar-header {
+      padding: 0 20px 15px 20px;
+      border-bottom: 2px solid #e9ecef;
+      margin-bottom: 20px;
+    }
+    
+    .sidebar-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2F5597;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .sidebar-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .sidebar-nav > li {
+      margin-bottom: 8px;
+    }
+    
+    .sidebar-nav a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+    
+    .sidebar-nav a:hover {
+      background-color: rgba(47, 85, 151, 0.1);
+      color: #2F5597;
+      border-left-color: #2F5597;
+    }
+    
+    .sidebar-nav a.active {
+      background-color: rgba(47, 85, 151, 0.15);
+      color: #2F5597;
+      border-left-color: #2F5597;
+      font-weight: 600;
+    }
+    
+    .sidebar-nav a.main-section {
+      font-weight: 600;
+      font-size: 15px;
+      color: #2F5597;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+      padding-bottom: 8px;
+    }
+    
+    .sidebar-nav a.sub-section {
+      padding-left: 35px;
+      font-size: 13px;
+      color: #666;
+      font-weight: 400;
+    }
+    
+    .sidebar-nav a.sub-sub-section {
+      padding-left: 50px;
+      font-size: 12px;
+      color: #777;
+      font-weight: 400;
+    }
+    
+    .sidebar-nav a.main-section:hover,
+    .sidebar-nav a.main-section.active {
+      background-color: rgba(47, 85, 151, 0.2);
+    }
+    
+    .sidebar-nav a.sub-section:hover,
+    .sidebar-nav a.sub-section.active {
+      background-color: rgba(47, 85, 151, 0.1);
+      color: #2F5597;
+    }
+    
+    .sidebar-nav a.sub-sub-section:hover,
+    .sidebar-nav a.sub-sub-section.active {
+      background-color: rgba(47, 85, 151, 0.08);
+      color: #2F5597;
+    }
+    
+    /* Content adjustment for sidebar */
+    .main-content {
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+    
+    /* Sidebar toggle button */
+    .sidebar-toggle {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #2F5597;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(47, 85, 151, 0.3);
+      z-index: 1001;
+      display: none;
+      transition: all 0.3s ease;
+    }
+    
+    .sidebar-toggle:hover {
+      background: #1a3f7a;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .sidebar-toggle.visible {
+      display: block;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 1024px) {
+      .left-sidebar {
+        transform: translateX(-100%);
+      }
+      
+      .left-sidebar.open {
+        transform: translateX(0);
+      }
+      
+      .sidebar-toggle {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .left-sidebar {
+        width: 260px;
+      }
+      
+      .sidebar-toggle {
+        left: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+    }
+
+    /* Theory Section Styles */
+    .theory-container {
+      position: relative;
+      margin: 30px 0;
+      min-height: 600px;
+    }
+    .theory-list {
+      width: 100%;
+      max-width: none;
+      padding-right: 405px; /* Leave space for the proof panel */
+    }
+    .theory-item {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid #dee2e6;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .theory-item:hover {
+      border-color: #2F5597;
+      box-shadow: 0 8px 25px rgba(47, 85, 151, 0.15);
+      transform: translateY(-2px);
+    }
+    .theory-item.active {
+      border-color: #2F5597;
+      box-shadow: 0 12px 35px rgba(47, 85, 151, 0.2);
+      background: linear-gradient(135deg, #f5fbff 0%, #ebf7fa 100%);
+    }
+    .theory-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .theory-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2F5597;
+      margin: 0;
+    }
+    .proof-btn {
+      background: linear-gradient(135deg, #2F5597 0%, #4a6bb8 100%);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .proof-btn:hover {
+      background: linear-gradient(135deg, #1a3f7a 0%, #2F5597 100%);
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(47, 85, 151, 0.3);
+    }
+    .theory-content {
+      color: #333;
+      line-height: 1.6;
+    }
+    .proof-panel {
+      position: fixed;
+      right: 40px;
+      top: 120px;
+      width: 520px;
+      height: calc(100vh - 140px);
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .proof-container {
+      background: #fff;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      min-height: 400px;
+      transition: all 0.3s ease;
+    }
+    .proof-container.active {
+      border-color: #2F5597;
+      box-shadow: 0 15px 40px rgba(47, 85, 151, 0.15);
+    }
+    .proof-container.active.definition-active {
+      border-color: #6c757d;
+      box-shadow: 0 15px 40px rgba(108, 117, 125, 0.15);
+    }
+    .proof-header {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2F5597;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e9ecef;
+    }
+    .proof-header.definition-header {
+      color: #6c757d;
+    }
+    .proof-content {
+      color: #333;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .proof-placeholder {
+      text-align: center;
+      color: #6c757d;
+      font-style: italic;
+      margin-top: 150px;
+    }
+    .math-block {
+      background: #f8f9fa;
+      border-left: 4px solid #2F5597;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .math-block.definition-math {
+      border-left: 4px solid #6c757d;
+    }
+    .definition-box {
+      background: transparent;
+      border: none;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    .theorem-box {
+      background: transparent;
+      border: none;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    .assumption-box {
+      background: transparent;
+      border: none;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    .theory-title.definition {
+      color: #6c757d;
+    }
+    .theory-title.theorem {
+      color: #2F5597;
+    }
+    .theory-title.assumption {
+      color: #dc3545;
+    }
+    
+    /* Definition specific styles (gray theme) */
+    .theory-item[data-theory^="token-tree"] .proof-btn,
+    .theory-item[data-theory^="compression-protocol"] .proof-btn,
+    .theory-item[data-theory^="inverse-alignment"] .proof-btn,
+    .theory-item[data-theory^="elasticity-definition"] .proof-btn,
+    .theory-item[data-theory^="normalized-compression"] .proof-btn {
+      background: linear-gradient(135deg, #6c757d 0%, #8a9196 100%);
+    }
+    .theory-item[data-theory^="token-tree"] .proof-btn:hover,
+    .theory-item[data-theory^="compression-protocol"] .proof-btn:hover,
+    .theory-item[data-theory^="inverse-alignment"] .proof-btn:hover,
+    .theory-item[data-theory^="elasticity-definition"] .proof-btn:hover,
+    .theory-item[data-theory^="normalized-compression"] .proof-btn:hover {
+      background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+    }
+    .theory-item[data-theory^="token-tree"]:hover,
+    .theory-item[data-theory^="compression-protocol"]:hover,
+    .theory-item[data-theory^="inverse-alignment"]:hover,
+    .theory-item[data-theory^="elasticity-definition"]:hover,
+    .theory-item[data-theory^="normalized-compression"]:hover {
+      border-color: #6c757d;
+      box-shadow: 0 8px 25px rgba(108, 117, 125, 0.15);
+    }
+    .theory-item[data-theory^="token-tree"].active,
+    .theory-item[data-theory^="compression-protocol"].active,
+    .theory-item[data-theory^="inverse-alignment"].active,
+    .theory-item[data-theory^="elasticity-definition"].active,
+    .theory-item[data-theory^="normalized-compression"].active {
+      border-color: #6c757d;
+      box-shadow: 0 12px 35px rgba(108, 117, 125, 0.2);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    
+    /* Theorem specific styles (blue theme) */
+    .theory-item[data-theory^="ideal-code-length"] .proof-btn,
+    .theory-item[data-theory^="main-theorem"] .proof-btn {
+      background: linear-gradient(135deg, #2F5597 0%, #4a6bb8 100%);
+    }
+    .theory-item[data-theory^="ideal-code-length"] .proof-btn:hover,
+    .theory-item[data-theory^="main-theorem"] .proof-btn:hover {
+      background: linear-gradient(135deg, #1a3f7a 0%, #2F5597 100%);
+      box-shadow: 0 4px 15px rgba(47, 85, 151, 0.3);
+    }
+    .theory-item[data-theory^="ideal-code-length"]:hover,
+    .theory-item[data-theory^="main-theorem"]:hover {
+      border-color: #2F5597;
+      box-shadow: 0 8px 25px rgba(47, 85, 151, 0.15);
+    }
+    .theory-item[data-theory^="ideal-code-length"].active,
+    .theory-item[data-theory^="main-theorem"].active {
+      border-color: #2F5597;
+      box-shadow: 0 12px 35px rgba(47, 85, 151, 0.2);
+      background: linear-gradient(135deg, #f5fbff 0%, #ebf7fa 100%);
+    }
+    @media (max-width: 1024px) {
+      .theory-list {
+        padding-right: 0;
+      }
+      .proof-panel {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+        right: auto;
+        top: auto;
+      }
+    }
     .experiment-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -101,12 +515,166 @@
       border-left: 4px solid #2F5597;
       margin: 20px 0;
     }
+    .key-finding.definition-finding {
+      background-color: #f8f9fa;
+      border-left: 4px solid #6c757d;
+    }
+    /* Navigation styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e0e0e0;
+      z-index: 1000;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2F5597;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: #2F5597;
+    }
+    .nav-links a.active {
+      color: #2F5597;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background-color: #2F5597;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    /* Mobile menu styles */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+    .section {
+      padding-top: 80px; /* Add space for fixed navbar */
+    }
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- Left Sidebar Navigation -->
+  <div class="left-sidebar" id="left-sidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Contents</h3>
+    </div>
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="#top" class="main-section">Title</a></li>
+        <li><a href="#overview" class="main-section">Overview</a></li>
+        <li><a href="#theory" class="main-section">Theory</a></li>
+        <li><a href="#token-tree" class="sub-section">Token Tree</a></li>
+        <li><a href="#compression-protocol" class="sub-section">Compression Protocol</a></li>
+        <li><a href="#ideal-code-length" class="sub-section">Ideal Code Length</a></li>
+        <li><a href="#inverse-alignment" class="sub-section">Inverse Alignment</a></li>
+        <li><a href="#elasticity-definition" class="sub-section">Elasticity Definition</a></li>
+        <li><a href="#normalized-compression" class="sub-section">Normalized Compression</a></li>
+        <li><a href="#main-theorem" class="sub-section">Main Theorem</a></li>
+        <li><a href="#experiments" class="main-section">Experiments</a></li>
+        <li><a href="#resistance-experiment" class="sub-section">Resistance Evidence</a></li>
+        <li><a href="#rebound-experiment" class="sub-section">Rebound Evidence</a></li>
+        <li><a href="#model-size-experiment" class="sub-section">Model Size Impact</a></li>
+        <li><a href="#data-volume-experiment" class="sub-section">Data Volume Impact</a></li>
+        <li><a href="#insights" class="main-section">Insights</a></li>
+        <li><a href="#impact" class="main-section">Impact</a></li>
+        <li><a href="#citation" class="main-section">Citation</a></li>
+      </ul>
+    </nav>
+  </div>
 
-  <div class="section">
+  <!-- Sidebar Toggle Button -->
+  <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#top" class="nav-logo">Language Models Resist Alignment</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#overview" data-section="overview">Overview</a></li>
+        <li><a href="#theory" data-section="theory">Theory</a></li>
+        <li><a href="#experiments" data-section="experiments">Experiments</a></li>
+        <li><a href="#insights" data-section="insights">Insights</a></li>
+        <li><a href="#impact" data-section="impact">Impact</a></li>
+        <li><a href="#citation" data-section="citation">Citation</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobile-toggle">☰</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+  <div class="section" id="top">
     <div class="container">
       <div class="title-row">
         <h1 class="title">Language Models Resist Alignment: Evidence From Data Compression<h1>
@@ -192,7 +760,7 @@
     </div>
 
     <div id="content">
-      <h2 class="section-header">Overview</h2>
+      <h2 class="section-header" id="overview">Overview</h2>
       <div class="paragraph">
         <p>
           Large language models (LLMs) may exhibit unintended or undesirable behaviors. Recent works have concentrated
@@ -221,7 +789,7 @@
             <span class="resist">resistance</span>: pre-trained models tend
             to retain their original distribution; and <span class="rebound">rebound</span>: the deeper alignment of
             models, the faster
-            they return to the pre-trained distribution under reverse finetuning. Moreover, The model’s change in
+            they return to the pre-trained distribution under reverse finetuning. Moreover, The model's change in
             compression rates \(\Delta \gamma_{p_\mathbf{\theta}}^{\mathcal{D}_i/\mathcal{D}}\) across
             different datasets is inversely proportional to their sizes \(|\mathcal{D}_i|\), which is
             analogous to the deformation behavior of a series of springs.
@@ -243,9 +811,125 @@
 
     <div id="content">
       
-      <h2 class="section-header">Experimental Validation</h2>
+      <h2 class="section-header" id="theory">Theoretical Framework</h2>
+      <div class="paragraph">
+        <p>
+          Our theoretical analysis builds upon compression theory to formally characterize the <i>elasticity</i> phenomenon in language models. Below are the key definitions and theorems that form the foundation of our work.
+        </p>
+      </div>
+
+      <div class="theory-container">
+        <div class="theory-list">
+          
+          <div class="theory-item" data-theory="token-tree" id="token-tree">
+            <div class="theory-header">
+              <h3 class="theory-title definition">Definition 1: Token Tree 𝒯</h3>
+              <button class="proof-btn" onclick="showProof('token-tree')">View Details</button>
+            </div>
+            <div class="theory-content definition-box">
+              <p>For a dataset \(\mathcal{D} = \{ \mathbf{z}_{i} \in \{0|1\}^{\infty} \mid i = 1,2, \cdots \}\), the token tree of \(\mathcal{D}\), denoted as \(\mathcal{T}_{\mathcal{D}}\), is defined as follows: each node has child nodes labeled <code>0</code> or <code>1</code>, along with an end-of-sequence (EOS) leaf node. The path from the root to a leaf node defines each response \(\mathbf{z}_{i}\), with the corresponding EOS node weight representing the response's probability while the weight of non-leaf nodes is the sum of the weights of their child nodes.</p>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="compression-protocol" id="compression-protocol">
+            <div class="theory-header">
+              <h3 class="theory-title definition">Definition 2: The Compression Protocol</h3>
+              <button class="proof-btn" onclick="showProof('compression-protocol')">View Details</button>
+            </div>
+            <div class="theory-content definition-box">
+              <p>Consider using the model \(p_{\mathbf{\theta}}\left(\cdot\right)\) to compress the dataset \(\mathcal{D}\). The compression protocol is defined in two steps:</p>
+              <ol>
+                <li><strong>Prune</strong> the token tree of \(\mathcal{D}\), retaining only the top \(d\) layers.</li>
+                <li><strong>Apply Huffman coding</strong> to compress the pruned token tree. Each response from the root node to a leaf node is treated as a symbol in the Huffman coding alphabet, and the weight of the leaf node is the probability of the symbol.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="ideal-code-length" id="ideal-code-length">
+            <div class="theory-header">
+              <h3 class="theory-title theorem">Theorem 1: Ideal Code Length</h3>
+              <button class="proof-btn" onclick="showProof('ideal-code-length')">View Proof</button>
+            </div>
+            <div class="theory-content theorem-box">
+              <p>Consider a finite parameter model \(p_{\mathbf{\theta}}\left(\cdot\right)\) training on dataset \(\mathcal{D}\), the ideal code length \(\mathcal{L}_{p_{\mathbf{\theta}}}\left(\mathbf{x}\right)\) of a random response \(\mathbf{x}\) compressed by \(p_{\mathbf{\theta}}\) can be expressed as:</p>
+              <div class="math-block">
+                \[\mathbb{E}\left[\mathcal{L}_{p_{\mathbf{\theta}}}\left(\mathbf{x}\right)\right] = \left\lceil\frac{\big|\mathbf{x}\big|}{d}\right\rceil\left\lceil-\sum_{l=1}^{d}\sum_{j=1}^{2^{l-1}}p_{lj}\log{p_{lj}}\right\rceil\]
+              </div>
+              <p>where \(d\) represents the depth of the \(\mathcal{T}_{\mathcal{D}}\) after pruning and \(p_{lj}\) represents the probability values of the leaf nodes for the \(j\)-th node at the \(l\)-th layer.</p>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="inverse-alignment" id="inverse-alignment">
+            <div class="theory-header">
+              <h3 class="theory-title definition">Definition 3: Inverse Alignment</h3>
+              <button class="proof-btn" onclick="showProof('inverse-alignment')">View Details</button>
+            </div>
+            <div class="theory-content definition-box">
+              <p>Given a language model \(p_{\mathbf{\theta}_0}\), aligned on dataset \(\mathcal{D}_{a}\) to produce the aligned model \(p_{\mathbf{\theta}_1}\). For any \(\epsilon > 0\), if applying a dataset \(\mathcal{D}_{b}\) (where \(|\mathcal{D}_{b}| \ll |\mathcal{D}_{a}|\)) to \(p_{\mathbf{\theta}_1}\) yields \(p_{\mathbf{\theta}_0^{\prime}}\) such that \(\rho(p_{\mathbf{\theta}_0^{\prime}}, p_{\mathbf{\theta}_0}) \leq \epsilon\) for a given eval metric \(\rho\), we define the transition from \(p_{\mathbf{\theta}_1}\) back to \(p_{\mathbf{\theta}_0^{\prime}}\) as <i>inverse alignment</i>.</p>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="elasticity-definition" id="elasticity-definition">
+            <div class="theory-header">
+              <h3 class="theory-title definition">Definition 4: The Elasticity of LLMs</h3>
+              <button class="proof-btn" onclick="showProof('elasticity-definition')">View Details</button>
+            </div>
+            <div class="theory-content definition-box">
+              <p>Consider a language model \(p_{\mathbf{\theta}_0}\) and transformation \(p_{\mathbf{\theta}_0} \xmapsto{f(\mathcal{D}_a)} p_{\mathbf{\theta}_1}\), <i>elasticity</i> is said to exist in \(\left(p_{\mathbf{\theta}_0},\mathcal{D}_a\right)\) if there is an algorithmically simple <i>inverse operation</i> \(g\) and a dataset \(\mathcal{D}_b\) such that \(|\mathcal{D}_b| \ll |\mathcal{D}_a|\), with the property that:</p>
+              <div class="math-block">
+                \[p_{\mathbf{\theta}_1} \xmapsto{g(\mathcal{D}_b)} p_{\mathbf{\theta}_0^{\prime}} \text{~and~} \rho(p_{\mathbf{\theta}_0^{\prime}}, p_{\mathbf{\theta}_0}) \leq \epsilon_0\]
+              </div>
+              <p>where \(\epsilon_0\) is a constant.</p>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="normalized-compression" id="normalized-compression">
+            <div class="theory-header">
+              <h3 class="theory-title definition">Definition 5: Normalized Compression Rate</h3>
+              <button class="proof-btn" onclick="showProof('normalized-compression')">View Details</button>
+            </div>
+            <div class="theory-content definition-box">
+              <p>For \(N\) pairwise disjoint datasets \(\mathcal{D}_{1}, \cdots, \mathcal{D}_{N}\) and a parameter model \(p_{\mathbf{\theta}}\) compressing \(\mathcal{D}=\bigcup_{i=1}^{N}\mathcal{D}_{i}\), the normalized compression rate \(\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_{i}/\mathcal{D}}\) for a particular dataset \(\mathcal{D}_{i}\) is defined as:</p>
+              <div class="math-block">
+                \[\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_{i}/\mathcal{D}} = \gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_{i}} - \log{M}\]
+              </div>
+              <p>where \(M\) is the number of leaf nodes of the pruned tree \(\mathcal{T}_{i}^{\prime}\) of dataset \(\mathcal{D}_{i}\).</p>
+            </div>
+          </div>
+
+          <div class="theory-item" data-theory="main-theorem" id="main-theorem">
+            <div class="theory-header">
+              <h3 class="theory-title theorem">Theorem 2: Elasticity of Language Models (Main Result)</h3>
+              <button class="proof-btn" onclick="showProof('main-theorem')">View Proof</button>
+            </div>
+            <div class="theory-content theorem-box">
+              <p>Consider datasets \(\mathcal{D}_1\), \(\mathcal{D}_2\) and perturbation \(\mathcal{D}_3\) each with a Pareto mass distribution, and the model \(p_{\mathbf{\theta}}\left(\cdot\right)\) trained on \(\mathcal{D}=\mathcal{D}_{1} \cup \mathcal{D}_{2} \cup \mathcal{D}_{3}\). When dataset \(\mathcal{D}_3\)'s data volume \(|\mathcal{D}_3|\) changes, the normalized compression rates \(\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}\) and \(\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}\) satisfy:</p>
+              <div class="math-block">
+                \[\begin{align}
+                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}}{d\,l} &= \Theta \left( -k \frac{ d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}}{d\,l} \right),\\
+                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}}{d\,l} &< 0,\quad
+                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}}{d\,l} > 0
+                \end{align}\]
+              </div>
+              <p>where \(l = \frac{|\mathcal{D}_3|}{|\mathcal{D}_2|} \ll 1\), \(k = \frac{|\mathcal{D}_1|}{|\mathcal{D}_2|} \gg 1\).</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="proof-panel">
+          <div class="proof-container" id="proof-container">
+            <div class="proof-placeholder">
+              <h3>🔍 Interactive Proofs</h3>
+              <p>Click on the "View Proof" or "View Details" buttons to explore the theoretical foundations of language model elasticity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <div class="experiment-section">
+      <h2 class="section-header" id="experiments">Experimental Validation</h2>
+      
+      <div class="experiment-section" id="resistance-experiment">
         <h3>1. Evidence of <span class="resist">Resistance</span> Phenomenon</h3>
         <div class="paragraph">
           We validate that <span class="inverse">inverse alignment</span> is consistently easier than <span class="forward">forward alignment</span> across different models and datasets. The experimental setup compares training loss when moving between different alignment states.
@@ -333,7 +1017,7 @@
         </div>
       </div>
 
-      <div class="experiment-section">
+      <div class="experiment-section" id="rebound-experiment">
         <h3>2. Evidence of <span class="rebound">Rebound</span> Phenomenon</h3>
         <div class="paragraph">
           We demonstrate that models trained with more positive data initially perform better but deteriorate faster when fine-tuned with negative data, exhibiting a characteristic <span class="rebound">rebound</span> pattern.
@@ -355,10 +1039,10 @@
         </div>
       </div>
 
-      <div class="experiment-section">
+      <div class="experiment-section" id="model-size-experiment">
         <h3>3. Factors Affecting <span class="rebound">Rebound</span> Strength</h3>
         
-        <h4>3.1 Model Size Impact</h4>
+        <h4 id="model-size-impact">3.1 Model Size Impact</h4>
         <div class="paragraph">
           Larger models exhibit stronger <span class="rebound">rebound</span> effects, with faster initial performance decline and slower subsequent decline.
         </div>
@@ -376,7 +1060,7 @@
           </div>
         </div>
 
-        <h4>3.2 Pre-training Data Volume Impact</h4>
+        <h4 id="data-volume-experiment">3.2 Pre-training Data Volume Impact</h4>
         <div class="paragraph">
           Models trained on larger pre-training datasets show enhanced <span class="rebound">rebound</span> effects, supporting our theoretical predictions.
         </div>
@@ -395,7 +1079,7 @@
         </div>
       </div>
 
-      <h2 class="section-header">Key Experimental Insights</h2>
+      <h2 class="section-header" id="insights">Key Experimental Insights</h2>
       <div class="paragraph">
         <ul>
           <li><strong>Universal Phenomenon:</strong> <span class="resist">Resistance</span> and <span class="rebound">rebound</span> effects are observed consistently across different models (Llama2-7B/13B, Llama3-8B, Gemma-2B, Qwen series) and tasks</li>
@@ -405,7 +1089,7 @@
         </ul>
       </div>
 
-      <h2 class="section-header">Broader Impact</h2>
+      <h2 class="section-header" id="impact">Broader Impact</h2>
       <div class="paragraph">
         Our findings reveal fundamental challenges in language model alignment:
         <ul>
@@ -415,7 +1099,7 @@
         </ul>
       </div>
 
-      <h2 class="section-header">Citation</h2>
+      <h2 class="section-header" id="citation">Citation</h2>
       <div class="citation">
         <pre id="codecell0">
 @article{ji2024language,
@@ -428,6 +1112,384 @@
     </div>  
 
   </div>
+  </div>
+
+  <!-- JavaScript for navigation functionality -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-toggle').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    });
+
+    // Left sidebar toggle
+    document.getElementById('sidebar-toggle').addEventListener('click', function() {
+      const sidebar = document.getElementById('left-sidebar');
+      sidebar.classList.toggle('open');
+    });
+
+    // Smooth scrolling for all navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu after clicking
+        document.getElementById('nav-links').classList.remove('active');
+        // Close sidebar on mobile after clicking
+        if (window.innerWidth <= 1024) {
+          document.getElementById('left-sidebar').classList.remove('open');
+        }
+      });
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Handle sidebar visibility on resize
+    window.addEventListener('resize', function() {
+      const sidebar = document.getElementById('left-sidebar');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      
+      if (window.innerWidth > 1024) {
+        sidebar.classList.remove('open');
+        sidebarToggle.classList.remove('visible');
+      } else {
+        sidebarToggle.classList.add('visible');
+      }
+    });
+
+    // Initialize sidebar toggle visibility
+    window.addEventListener('load', function() {
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      if (window.innerWidth <= 1024) {
+        sidebarToggle.classList.add('visible');
+      }
+    });
+
+    // Theory interaction functionality
+    const proofContent = {
+      'token-tree': {
+        title: 'Token Tree Definition',
+        content: `
+          <p><strong>Motivation:</strong> The token tree provides a structured representation of all possible responses in a dataset, enabling us to model the compression process systematically.</p>
+          
+          <p><strong>Key Properties:</strong></p>
+          <ul>
+            <li>Each path from root to EOS represents a complete response</li>
+            <li>Node weights represent probability masses</li>
+            <li>Binary alphabet simplifies theoretical analysis</li>
+            <li>Tree structure naturally encodes the autoregressive generation process</li>
+          </ul>
+
+                     <div class="math-block">
+             <p><strong>Formal Structure:</strong></p>
+             <p>For binary tokens {0, 1}, at depth d:</p>
+             \\[\\text{Nodes at level } l: 2^{l-1}, \\quad l \\in \\{1, 2, \\ldots, d\\}\\]
+             \\[\\sum_{\\text{all paths}} p_{\\text{path}} = 1\\]
+           </div>
+
+          <p><strong>Connection to Language Models:</strong> The token tree naturally represents the distribution learned by autoregressive language models, where each token prediction corresponds to choosing a branch in the tree.</p>
+        `
+      },
+      'compression-protocol': {
+        title: 'Compression Protocol Details',
+        content: `
+          <p><strong>Two-Stage Process:</strong></p>
+          
+          <p><strong>Stage 1: Tree Pruning</strong></p>
+          <p>Due to finite model capacity, we can only perfectly model up to depth d. This reflects the practical limitation that language models cannot capture arbitrarily long dependencies.</p>
+          
+          <div class="math-block">
+            \\[\\text{Pruned Tree: } \\mathcal{T}_{\\mathcal{D}}^{\\prime} = \\text{top } d \\text{ layers of } \\mathcal{T}_{\\mathcal{D}}\\]
+          </div>
+
+          <p><strong>Stage 2: Huffman Coding</strong></p>
+          <p>Apply optimal prefix coding to the leaf nodes (complete responses) of the pruned tree.</p>
+
+          <div class="math-block">
+            <p><strong>Optimality:</strong> Huffman coding achieves the theoretical minimum:</p>
+            \\[H(\\mathcal{P}) \\leq \\mathbb{E}[L] < H(\\mathcal{P}) + 1\\]
+            where \\(H(\\mathcal{P})\\) is the Shannon entropy and \\(L\\) is the code length.
+          </div>
+
+          <p><strong>Why This Protocol?</strong></p>
+          <ul>
+            <li>Models training objective (minimize perplexity) ≡ minimize compression rate</li>
+            <li>Huffman coding ensures optimality within the depth constraint</li>
+            <li>Provides a principled way to compare model performance across datasets</li>
+          </ul>
+        `
+      },
+      'ideal-code-length': {
+        title: 'Proof: Ideal Code Length',
+        content: `
+          <p><strong>Proof Strategy:</strong> We consider two cases based on sequence length relative to model depth d.</p>
+
+          <p><strong>Case 1:</strong> \\(|\\mathbf{x}| \\leq d\\) (Perfect Compression)</p>
+          <p>The model can perfectly represent the sequence within its depth limit.</p>
+          
+          <div class="math-block">
+            \\[\\mathbb{E}[\\mathcal{L}_{p_{\\mathbf{\\theta}}}(\\mathbf{x})] = H(\\mathcal{P}_{\\text{leaf}}) = -\\sum_{l=1}^{d}\\sum_{j=1}^{2^{l-1}}p_{lj}\\log p_{lj}\\]
+          </div>
+
+          <p><strong>Case 2:</strong> \\(sd < |\\mathbf{x}| \\leq (s+1)d\\) (Segmented Compression)</p>
+          <p>Split \\(\\mathbf{x} = (\\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_s, \\mathbf{x}_{s+1})\\) where \\(|\\mathbf{x}_i| = d\\) for \\(i \\leq s\\).</p>
+
+          <div class="math-block">
+            \\begin{align}
+            \\mathbb{E}[\\mathcal{L}_{p_{\\mathbf{\\theta}}}(\\mathbf{x})] &= \\sum_{i=1}^{s+1} \\mathbb{E}[\\mathcal{L}_{p_{\\mathbf{\\theta}}}(\\mathbf{x}_i)] \\\\
+            &= \\left\\lceil\\frac{|\\mathbf{x}|}{d}\\right\\rceil \\cdot H(\\mathcal{P}_{\\text{leaf}})
+            \\end{align}
+          </div>
+
+          <p><strong>Key Insight:</strong> The ceiling function \\(\\lceil \\cdot \\rceil\\) accounts for the discrete nature of compression blocks, and segmentation is optimal due to the memoryless property of our compression protocol.</p>
+
+          <p><strong>Practical Implication:</strong> This theorem establishes the fundamental relationship between model depth, sequence length, and compression efficiency - directly connecting to language model perplexity.</p>
+        `
+      },
+      'inverse-alignment': {
+        title: 'Inverse Alignment Concept',
+        content: `
+          <p><strong>Core Idea:</strong> Inverse alignment demonstrates that alignment can be undone with disproportionately small effort compared to the original alignment process.</p>
+
+          <p><strong>Mathematical Formulation:</strong></p>
+          <div class="math-block">
+            \\[p_{\\mathbf{\\theta}_0} \\xrightarrow{\\mathcal{D}_a \\text{ (large)}} p_{\\mathbf{\\theta}_1} \\xrightarrow{\\mathcal{D}_b \\text{ (small)}} p_{\\mathbf{\\theta}_0^{\\prime}}\\]
+            where \\(|\\mathcal{D}_b| \\ll |\\mathcal{D}_a|\\) but \\(\\rho(p_{\\mathbf{\\theta}_0^{\\prime}}, p_{\\mathbf{\\theta}_0}) \\leq \\epsilon\\)
+          </div>
+
+          <p><strong>Key Properties:</strong></p>
+          <ul>
+            <li><strong>Asymmetry:</strong> Forward alignment requires large dataset \\(\\mathcal{D}_a\\)</li>
+            <li><strong>Efficiency:</strong> Inverse process needs only small dataset \\(\\mathcal{D}_b\\)</li>
+            <li><strong>Effectiveness:</strong> Recovery is nearly complete (\\(\\rho \\leq \\epsilon\\))</li>
+          </ul>
+
+          <p><strong>Practical Significance:</strong></p>
+          <ul>
+            <li>Explains why aligned models can be easily "jailbroken"</li>
+            <li>Highlights fragility of current alignment techniques</li>
+            <li>Motivates need for more robust alignment methods</li>
+          </ul>
+
+          <p><strong>Connection to Elasticity:</strong> Inverse alignment is a manifestation of the underlying elasticity property - the model's tendency to revert to its pre-training distribution when perturbed.</p>
+        `
+      },
+      'elasticity-definition': {
+        title: 'Elasticity Definition Details',
+        content: `
+          <p><strong>Physical Analogy:</strong> Just as elastic materials return to their original shape after deformation, language models exhibit a tendency to revert to their pre-training distribution.</p>
+
+          <p><strong>Mathematical Conditions:</strong></p>
+          
+          <div class="math-block">
+            <p><strong>1. Algorithmic Simplicity:</strong> The inverse operation g should be computationally simple (e.g., standard fine-tuning).</p>
+            <p><strong>2. Data Efficiency:</strong> \\(|\\mathcal{D}_b| \\ll |\\mathcal{D}_a|\\) - orders of magnitude difference.</p>
+            <p><strong>3. Effectiveness:</strong> \\(\\rho(p_{\\mathbf{\\theta}_0^{\\prime}}, p_{\\mathbf{\\theta}_0}) \\leq \\epsilon_0\\) - near-perfect recovery.</p>
+          </div>
+
+          <p><strong>Components of Elasticity:</strong></p>
+          <ul>
+            <li><span class="resist"><strong>Resistance:</strong></span> Initial reluctance to change from pre-training distribution</li>
+            <li><span class="rebound"><strong>Rebound:</strong></span> Tendency to return to original state under perturbation</li>
+          </ul>
+
+          <p><strong>Theoretical Foundation:</strong> Elasticity emerges from the fundamental asymmetry in dataset sizes:</p>
+          <div class="math-block">
+            \\[|\\mathcal{D}_{\\text{pre-train}}| \\gg |\\mathcal{D}_{\\text{alignment}}| \\gg |\\mathcal{D}_{\\text{perturbation}}|\\]
+          </div>
+
+          <p><strong>Implications:</strong></p>
+          <ul>
+            <li>Current alignment methods may be fundamentally limited</li>
+            <li>Need for alignment techniques that account for elasticity</li>
+            <li>Importance of understanding pre-training's lasting influence</li>
+          </ul>
+        `
+      },
+      'normalized-compression': {
+        title: 'Normalized Compression Rate',
+        content: `
+          <p><strong>Motivation:</strong> Raw compression rates are not directly comparable across datasets of different sizes and complexities. Normalization enables fair comparison.</p>
+
+          <p><strong>Normalization Process:</strong></p>
+          <div class="math-block">
+            \\[\\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_{i}/\\mathcal{D}} = \\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_{i}} - \\log M\\]
+          </div>
+
+          <p><strong>Why Subtract log M?</strong></p>
+          <ul>
+            <li>\\(M\\) = number of possible outcomes (leaf nodes)</li>
+            <li>\\(\\log M\\) = uniform distribution entropy</li>
+            <li>Normalization removes baseline complexity</li>
+            <li>Enables comparison of model's compression improvement</li>
+          </ul>
+
+          <p><strong>Interpretation:</strong></p>
+          <div class="math-block">
+            <p><strong>Compression Gain:</strong></p>
+            \\[\\text{Gain} = \\log M - \\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_{i}} = -\\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_{i}/\\mathcal{D}}\\]
+          </div>
+
+          <p><strong>Properties:</strong></p>
+          <ul>
+            <li><strong>Lower values</strong> = better compression = better model fit</li>
+            <li><strong>Negative values</strong> = compression better than uniform</li>
+            <li><strong>Cross-dataset comparison</strong> = meaningful relative performance</li>
+          </ul>
+
+          <p><strong>Connection to Perplexity:</strong> The normalized compression rate is directly related to model perplexity, providing a information-theoretic foundation for model evaluation.</p>
+        `
+      },
+      'main-theorem': {
+        title: 'Proof: Main Elasticity Theorem',
+        content: `
+          <p><strong>Proof Overview:</strong> We show that compression rate changes are inversely proportional to dataset sizes, creating an "elastic" behavior analogous to coupled springs.</p>
+
+          <p><strong>Step 1: Setup & Assumptions</strong></p>
+          <p>Consider datasets with Pareto mass distributions:</p>
+          <div class="math-block">
+            \\[p_X(x) = \\frac{\\alpha c^\\alpha}{x^{\\alpha+1}}, \\quad x \\geq c\\]
+          </div>
+
+          <p><strong>Step 2: Transform to Mass Distribution</strong></p>
+          <p>Using Lemma (Entropy of Mass Distribution):</p>
+          <div class="math-block">
+            \\[\\frac{d\\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_j/\\mathcal{D}}}{dl} = -\\alpha^3 c^{3\\alpha} \\frac{dS_j}{dl}\\]
+          </div>
+
+          <p><strong>Step 3: Key Integrals</strong></p>
+          <div class="math-block">
+            \\begin{align}
+            S_1 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{1}{x_1^\\alpha x_2^{\\alpha+1} x_3^{\\alpha+1}} \\log\\frac{kx_1+x_2+lx_3}{k+l+1} dx_1dx_2dx_3 \\\\
+            S_2 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{1}{x_1^{\\alpha+1} x_2^\\alpha x_3^{\\alpha+1}} \\log\\frac{kx_1+x_2+lx_3}{k+l+1} dx_1dx_2dx_3
+            \\end{align}
+          </div>
+
+          <p><strong>Step 4: Asymptotic Analysis</strong></p>
+          <p>As \\(k \\to +\\infty, l \\to 0\\):</p>
+          <div class="math-block">
+            \\[\\lim_{k \\to +\\infty, l \\to 0} \\frac{k \\cdot \\frac{dS_1}{dl} + \\frac{dS_2}{dl}}{k \\cdot \\frac{dS_1}{dl}} = 0\\]
+          </div>
+
+          <p><strong>Step 5: Physical Interpretation</strong></p>
+          <p>The result shows inverse proportionality:</p>
+          <div class="math-block">
+            \\[|\\mathcal{D}_1| \\cdot \\Delta\\gamma_1 \\approx |\\mathcal{D}_2| \\cdot \\Delta\\gamma_2 = \\text{constant}\\]
+          </div>
+
+          <p><strong>Spring Analogy:</strong> Just like Hooke's law \\(F = k \\Delta l\\), we have \\(F \\propto |\\mathcal{D}| \\cdot \\Delta\\gamma\\), where the "spring constant" is the dataset size and "deformation" is the compression rate change.</p>
+        `
+      }
+    };
+
+    function showProof(theoryId) {
+      // Remove active class from all theory items
+      document.querySelectorAll('.theory-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Add active class to clicked item
+      const clickedItem = document.querySelector(`[data-theory="${theoryId}"]`);
+      if (clickedItem) {
+        clickedItem.classList.add('active');
+      }
+      
+      // Update proof panel
+      const proofContainer = document.getElementById('proof-container');
+      const proof = proofContent[theoryId];
+      
+      // Determine if it's a definition or theorem
+      const definitionTheories = ['token-tree', 'compression-protocol', 'inverse-alignment', 'elasticity-definition', 'normalized-compression'];
+      const theoremTheories = ['ideal-code-length', 'main-theorem'];
+      
+      if (proof) {
+        // Clear previous theme classes
+        proofContainer.classList.remove('definition-active');
+        
+        let headerClass = 'proof-header';
+        let mathBlockClass = '';
+        
+        if (definitionTheories.includes(theoryId)) {
+          proofContainer.classList.add('definition-active');
+          headerClass += ' definition-header';
+          mathBlockClass = ' definition-math';
+        }
+        
+        let content = proof.content;
+        // Add appropriate math-block classes
+        if (mathBlockClass) {
+          content = content.replace(/class="math-block"/g, `class="math-block${mathBlockClass}"`);
+        }
+        
+        proofContainer.innerHTML = `
+          <div class="${headerClass}">${proof.title}</div>
+          <div class="proof-content">${content}</div>
+        `;
+        proofContainer.classList.add('active');
+        
+        // Re-render MathJax for the new content
+        if (window.MathJax) {
+          MathJax.typesetPromise([proofContainer]).catch((err) => console.log(err.message));
+        }
+      }
+    }
+
+    // Highlight active section in navigation
+    window.addEventListener('scroll', function() {
+      const sections = [
+        'top', 'overview', 'theory', 'token-tree', 'compression-protocol', 
+        'ideal-code-length', 'inverse-alignment', 'elasticity-definition', 
+        'normalized-compression', 'main-theorem', 'experiments', 
+        'resistance-experiment', 'rebound-experiment', 'model-size-experiment', 
+        'data-volume-experiment', 'insights', 'impact', 'citation'
+      ];
+      
+      const topNavLinks = document.querySelectorAll('.nav-links a');
+      const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+      
+      let current = '';
+      sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = sectionId;
+          }
+        }
+      });
+
+      // Update top navigation
+      topNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === current) {
+          link.classList.add('active');
+        }
+      });
+
+      // Update sidebar navigation
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
