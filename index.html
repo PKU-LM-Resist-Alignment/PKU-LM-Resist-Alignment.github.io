@@ -510,6 +510,81 @@
       border: 1px solid #ddd;
       border-radius: 8px;
     }
+    
+    /* Main GIF Styles */
+    .main-gif-container {
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .gif-wrapper {
+      text-align: center;
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border: 2px solid #e9ecef;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .gif-wrapper:hover {
+      border-color: #2F5597;
+      box-shadow: 0 15px 40px rgba(47, 85, 151, 0.15);
+      transform: translateY(-3px);
+    }
+    
+    .main-gif {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .main-gif:hover {
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gif-caption {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #2F5597;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+    
+    /* Responsive design for main gif */
+    @media (max-width: 768px) {
+      .main-gif-container {
+        margin: 30px 0;
+      }
+      
+      .gif-wrapper {
+        padding: 20px;
+        margin: 0 10px;
+      }
+      
+      .gif-caption {
+        font-size: 14px;
+        margin-top: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gif-wrapper {
+        padding: 15px;
+        border-radius: 12px;
+      }
+      
+      .main-gif {
+        border-radius: 8px;
+      }
+    }
     .key-finding {
       background-color: #e8f4fd;
       padding: 15px;
@@ -751,6 +826,14 @@
       We demonstrate the elasticity of post-alignment models, forming resistance to alignment.
     </p>
 
+    <!-- Main GIF Demonstration -->
+    <div class="main-gif-container">
+      <div class="gif-wrapper">
+        <img src="resist_main.gif" alt="Language Model Resistance Demonstration" class="main-gif">
+        <p class="gif-caption">Visual demonstration of language model resistance to alignment</p>
+      </div>
+    </div>
+
     <div class="key-finding">
       <h3>Key Finding: The Elasticity of Language Models</h3>
       <p>Language models exhibit <strong>elasticity</strong> - an inherent tendency to retain original distributions and resist alignment modifications. This phenomenon encompasses:</p>
@@ -900,19 +983,19 @@
 
           <div class="theory-item" data-theory="main-theorem" id="main-theorem">
             <div class="theory-header">
-              <h3 class="theory-title theorem">Theorem 2: Elasticity of Language Models (Main Result)</h3>
+              <h3 class="theory-title theorem">Theorem 2: Elasticity of Language Models</h3>
               <button class="proof-btn" onclick="showProof('main-theorem')">View Proof</button>
             </div>
             <div class="theory-content theorem-box">
-              <p>Consider datasets \(\mathcal{D}_1\), \(\mathcal{D}_2\) and perturbation \(\mathcal{D}_3\) each with a Pareto mass distribution, and the model \(p_{\mathbf{\theta}}\left(\cdot\right)\) trained on \(\mathcal{D}=\mathcal{D}_{1} \cup \mathcal{D}_{2} \cup \mathcal{D}_{3}\). When dataset \(\mathcal{D}_3\)'s data volume \(|\mathcal{D}_3|\) changes, the normalized compression rates \(\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}\) and \(\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}\) satisfy:</p>
+              <p>Consider the pre-training dataset \(\mathcal{D}_p = \bigcup_{i=1}^{3}\mathcal{D}_{i}\), the alignment dataset \(\mathcal{D}_a\), and the perturbation dataset \(\mathcal{D}_t\), with the model \(p_{\boldsymbol{\theta}}(\cdot)\) trained on \(\mathcal{D}=\mathcal{D}_{p} \cup \mathcal{D}_{a} \cup \mathcal{D}_{t}\). Assume that \(\mathcal{D}_a \overset{d}{\sim} \mathcal{D}_{2}\), \(\mathcal{D}_t \overset{d}{\sim} \mathcal{D}_{3}\), and \(\mathcal{D}_{1},\mathcal{D}_{2},\mathcal{D}_{3}\) are each distributed according to a Pareto mass distribution. As the perturbation data volume \(|\mathcal{D}_t|\) varies, \(\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_p/\mathcal{D}}\) and \(\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_a/\mathcal{D}}\) satisfy:</p>
               <div class="math-block">
                 \[\begin{align}
-                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}}{d\,l} &= \Theta \left( -k \frac{ d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}}{d\,l} \right),\\
-                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_1/\mathcal{D}}}{d\,l} &< 0,\quad
-                \frac{d\gamma_{p_{\mathbf{\theta}}}^{\mathcal{D}_2/\mathcal{D}}}{d\,l} > 0
+                \frac{d\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_a/\mathcal{D}}}{d\,l} &= \Theta \left( -k \frac{ d\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_p/\mathcal{D}}}{d\,l} \right),\\
+                \frac{d\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_p/\mathcal{D}}}{d\,l} &< 0,\\
+                \frac{d\gamma_{p_{\boldsymbol{\theta}}}^{\mathcal{D}_a/\mathcal{D}}}{d\,l} &> 0,
                 \end{align}\]
               </div>
-              <p>where \(l = \frac{|\mathcal{D}_3|}{|\mathcal{D}_2|} \ll 1\), \(k = \frac{|\mathcal{D}_1|}{|\mathcal{D}_2|} \gg 1\).</p>
+              <p>where \(l = \frac{|\mathcal{D}_t|}{|\mathcal{D}_a|} \ll 1\), \(k = \frac{|\mathcal{D}_p|}{|\mathcal{D}_a|} \gg 1\), and \(\{\mathcal{D}_{i}\}_{i=1}^3\) are datasets of equal cardinality.</p>
             </div>
           </div>
 
@@ -1356,43 +1439,44 @@
         `
       },
       'main-theorem': {
-        title: 'Proof: Main Elasticity Theorem',
+        title: 'Proof: Elasticity of Language Models',
         content: `
-          <p><strong>Proof Overview:</strong> We show that compression rate changes are inversely proportional to dataset sizes, creating an "elastic" behavior analogous to coupled springs.</p>
+          <p><strong>Proof Overview:</strong> We demonstrate that compression rate changes are inversely proportional to dataset sizes, creating "elastic" behavior in language models when perturbation data is introduced.</p>
 
           <p><strong>Step 1: Setup & Assumptions</strong></p>
-          <p>Consider datasets with Pareto mass distributions:</p>
+          <p>Consider pre-training dataset \\(\\mathcal{D}_p = \\bigcup_{i=1}^{3}\\mathcal{D}_{i}\\), alignment dataset \\(\\mathcal{D}_a\\), and perturbation dataset \\(\\mathcal{D}_t\\) with Pareto mass distributions:</p>
           <div class="math-block">
             \\[p_X(x) = \\frac{\\alpha c^\\alpha}{x^{\\alpha+1}}, \\quad x \\geq c\\]
           </div>
 
           <p><strong>Step 2: Transform to Mass Distribution</strong></p>
-          <p>Using Lemma (Entropy of Mass Distribution):</p>
+          <p>Using Lemma (Entropy of Mass Distribution), we replace Shannon entropy with mass distribution:</p>
           <div class="math-block">
-            \\[\\frac{d\\gamma_{p_{\\mathbf{\\theta}}}^{\\mathcal{D}_j/\\mathcal{D}}}{dl} = -\\alpha^3 c^{3\\alpha} \\frac{dS_j}{dl}\\]
+            \\[\\frac{d\\gamma_{p_{\\boldsymbol{\theta}}}^{\\mathcal{D}_j/\\mathcal{D}}}{dl} = \\frac{d\\left(\\mathbb{E}_{X_{\\mathcal{D}_{j}}\\sim\\mathcal{P}_{mass}^{j},X_{\\mathcal{D}}\\sim\\mathcal{P}_{mass}}\\left[-X_{\\mathcal{D}_{j}}\\log{X_{\\mathcal{D}}}\\right]\\right)}{dl}\\]
           </div>
 
           <p><strong>Step 3: Key Integrals</strong></p>
+          <p>For pre-training and alignment datasets:</p>
           <div class="math-block">
             \\begin{align}
-            S_1 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{1}{x_1^\\alpha x_2^{\\alpha+1} x_3^{\\alpha+1}} \\log\\frac{kx_1+x_2+lx_3}{k+l+1} dx_1dx_2dx_3 \\\\
-            S_2 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{1}{x_1^{\\alpha+1} x_2^\\alpha x_3^{\\alpha+1}} \\log\\frac{kx_1+x_2+lx_3}{k+l+1} dx_1dx_2dx_3
+            S_1 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{\\alpha^3 c^{3\\alpha}(x_1+x_2+x_3)}{3x_{1}^{\\alpha+1} x_{2}^{\\alpha+1} x_{3}^{\\alpha+1}}\\log{\\frac{\\frac{k}{3}(x_{1}+x_2+x_3)+x_{2}+lx_3}{k+l+1}}dx_1dx_2dx_3 \\\\
+            S_2 &= \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\int_{c}^{+\\infty} \\frac{\\alpha^3 c^{3\\alpha}}{x_{1}^{\\alpha+1} x_{2}^{\\alpha} x_{3}^{\\alpha+1}}\\log{\\frac{\\frac{k}{3}(x_{1}+x_2+x_3)+x_{2}+lx_3}{k+l+1}}dx_1dx_2dx_3
             \\end{align}
           </div>
 
           <p><strong>Step 4: Asymptotic Analysis</strong></p>
-          <p>As \\(k \\to +\\infty, l \\to 0\\):</p>
+          <p>As \\(k \\to +\\infty\\) (large pre-training data) and \\(l \\to 0\\) (small perturbation):</p>
           <div class="math-block">
-            \\[\\lim_{k \\to +\\infty, l \\to 0} \\frac{k \\cdot \\frac{dS_1}{dl} + \\frac{dS_2}{dl}}{k \\cdot \\frac{dS_1}{dl}} = 0\\]
+            \\[\\lim_{k \\to +\\infty, l \\to 0} \\frac{k \\cdot \\frac{d\\gamma_{p_{\\boldsymbol{\theta}}}^{\\mathcal{D}_p/\\mathcal{D}}}{dl} + \\frac{d\\gamma_{p_{\\boldsymbol{\theta}}}^{\\mathcal{D}_a/\\mathcal{D}}}{dl}}{k \\cdot \\frac{d\\gamma_{p_{\\boldsymbol{\theta}}}^{\\mathcal{D}_p/\\mathcal{D}}}{dl}} = 0\\]
           </div>
 
           <p><strong>Step 5: Physical Interpretation</strong></p>
-          <p>The result shows inverse proportionality:</p>
+          <p>The elasticity relationship shows:</p>
           <div class="math-block">
-            \\[|\\mathcal{D}_1| \\cdot \\Delta\\gamma_1 \\approx |\\mathcal{D}_2| \\cdot \\Delta\\gamma_2 = \\text{constant}\\]
+            \\[|\\mathcal{D}_p| \\cdot \\Delta\\gamma_p \\approx |\\mathcal{D}_a| \\cdot \\Delta\\gamma_a = \\text{constant}\\]
           </div>
 
-          <p><strong>Spring Analogy:</strong> Just like Hooke's law \\(F = k \\Delta l\\), we have \\(F \\propto |\\mathcal{D}| \\cdot \\Delta\\gamma\\), where the "spring constant" is the dataset size and "deformation" is the compression rate change.</p>
+          <p><strong>Spring Analogy:</strong> Like Hooke's law \\(F = k \\Delta l\\), we have \\(F \\propto |\\mathcal{D}| \\cdot \\Delta\\gamma\\), where dataset size acts as the "spring constant" and compression rate change as "deformation". This explains why large pre-training datasets create strong resistance to alignment changes.</p>
         `
       }
     };
